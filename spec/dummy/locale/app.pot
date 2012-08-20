@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: version 0.0.1\n"
+"POT-Creation-Date: 2012-08-20 16:17-0300\n"
+"PO-Revision-Date: 2012-08-20 16:17-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: app/views/layouts/application.html.erb:8
+msgid "erb trans"
+msgstr ""
+
+#: app/assets/test.coffee:1
+msgid "json"
+msgstr ""
+
+#: app/assets/test.coffee:1
+msgid "item"
+msgid_plural "items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/assets/test.coffee:1
+msgid "hello {yourname}"
+msgstr ""
+
+#: app/assets/test.coffee:1
+msgid "new-trans"
+msgstr ""
+
+#: app/assets/test.coffee:1
+msgctxt "namespaced"
+msgid "trans"
+msgstr ""
+
+#: app/assets/test.coffee:1
+msgid "Hello\nBuddy"
+msgstr ""
+
+#: app/assets/test.coffee:1
+msgid "Multi-line"
+msgstr ""
