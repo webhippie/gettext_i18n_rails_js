@@ -18,7 +18,7 @@ It requires rails 3.2 or later, any version of 'gettext_i18n_rails' will do thou
 
 This will reconstruct the `locale/<lang>/app.po` structure as javascript files inside `app/assets/javascripts/locale/<lang>/app.js`
 
-## Using this translations in your javascript
+## Using translations in your javascript
 
 The gem provides the Jed library to use the generated javascript files. (http://slexaxton.github.com/Jed/some) 
 It also provides a global `__` function that maps to `Jed#gettext`.
