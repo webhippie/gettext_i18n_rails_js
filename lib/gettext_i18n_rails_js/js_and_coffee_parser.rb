@@ -1,9 +1,4 @@
-require 'gettext/utils'
-begin
-  require 'gettext/tools/rgettext'
-rescue LoadError #version prior to 2.0
-  require 'gettext/rgettext'
-end
+require 'gettext/tools/xgettext'
 
 module GettextI18nRailsJs
   class JsAndCoffeeParser
@@ -69,4 +64,5 @@ module GettextI18nRailsJs
   end
 end
 
-GetText::RGetText.add_parser(GettextI18nRailsJs::JsAndCoffeeParser)
+require 'gettext_i18n_rails/gettext_hooks'
+GettextI18nRails::GettextHooks.add_parser(GettextI18nRailsJs::JsAndCoffeeParser)
