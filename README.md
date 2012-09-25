@@ -6,7 +6,7 @@ It will find translations inside your .js and .coffee files, then it will create
 
 ## Installation
 
-It requires rails 3.2 or later, any version of 'gettext_i18n_rails' will do though.
+Requires rails 3.2 or later.
 
 #### Add the following to your gemfile:
 
