@@ -3,7 +3,7 @@ namespace :gettext do
   task :po_to_json => :environment do
     require 'po_to_json'
 
-    GettextI18nRails::JsAndCoffeeParser.js_gettext_function = js_gettext_function
+    GettextI18nRails::JsAndCoffeeParser.js_gettext_function = js_gettext_function if defined?(GettextI18nRails::JsAndCoffeeParser)
 
     po_files = Dir["#{locale_path}/**/*.po"]
     if po_files.empty?
@@ -12,7 +12,7 @@ namespace :gettext do
 
     js_locales = File.join(Rails.root, 'app', 'assets', 'javascripts', 'locale')
     FileUtils.makedirs(js_locales)
-    
+
     po_files.each do |po_file|
       # Language is used for filenames, while language code is used
       # as the in-app language code. So for instance, simplified chinese will
@@ -41,7 +41,7 @@ namespace :gettext do
     puts 'translate these files'
     Dir.glob("{app,lib,config,#{locale_path}}/**/*.{rb,erb,haml,slim,js,coffee,handlebars}")
   end
- 
+
   # The parser will use this as the function basename when parsing translations.
   def js_gettext_function
     '__'
