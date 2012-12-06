@@ -1,4 +1,5 @@
 # GettextI18nRailsJs
+[![Build Status](https://secure.travis-ci.org/nubis/gettext_i18n_rails_js.png?branch=master)](https://travis-ci.org/nubis/gettext_i18n_rails_js)
 
 GettextI18nRailsJs extends [gettext_i18n_rails](https://github.com/grosser/gettext_i18n_rails) making your .po files available to client side javascript as JSON
 
