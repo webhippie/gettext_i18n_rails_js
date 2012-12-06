@@ -49,9 +49,9 @@ module GettextI18nRailsJs
 
       File.read(file).scan(invoke_regex).collect do |function, arguments|
         separator = function == "n#{_}" ? "\000" : "\004"
-        key = arguments.scan(/('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/)
-          .collect{|match| match.first[1..-2]}
-          .join(separator)
+        key = arguments.scan(/('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/).
+          collect{|match| match.first[1..-2]}.
+          join(separator)
         next if key == ''
         key.gsub!("\n", '\n')
         key.gsub!("\t", '\t')
