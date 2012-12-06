@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 11:10-0300\n"
+"POT-Creation-Date: 2012-12-06 11:18-0300\n"
 "PO-Revision-Date: 2012-09-25 11:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,37 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: app/views/layouts/application.html.erb:8
+msgid "Hello\\nBuddy"
+msgstr ""
+
+msgid "Multi-line"
+msgstr ""
+
 msgid "erb trans"
 msgstr ""
 
-#: app/assets/test.coffee:1
-msgid "json"
+msgid "hello {yourname}"
 msgstr ""
 
-#: app/assets/test.coffee:1
 msgid "item"
 msgid_plural "items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/assets/test.coffee:1
-msgid "hello {yourname}"
+msgid "json"
 msgstr ""
 
-#: app/assets/test.coffee:1
 msgid "new-trans"
 msgstr ""
 
-#: app/assets/test.coffee:1
 msgctxt "namespaced"
 msgid "trans"
-msgstr ""
-
-#: app/assets/test.coffee:1
-msgid "Hello\\nBuddy"
-msgstr ""
-
-#: app/assets/test.coffee:1
-msgid "Multi-line"
 msgstr ""

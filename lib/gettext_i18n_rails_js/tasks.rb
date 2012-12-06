@@ -2,8 +2,9 @@ namespace :gettext do
   desc "Convert PO files to js files in app/assets/locales"
   task :po_to_json => :environment do
     require 'po_to_json'
+    require 'gettext_i18n_rails_js/js_and_coffee_parser'
 
-    GettextI18nRails::JsAndCoffeeParser.js_gettext_function = js_gettext_function
+    GettextI18nRailsJs::JsAndCoffeeParser.js_gettext_function = js_gettext_function
 
     po_files = Dir["#{locale_path}/**/*.po"]
     if po_files.empty?
