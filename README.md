@@ -11,6 +11,7 @@ Requires rails 3.2 or later.
 #### Add the following to your gemfile:
 
     gem 'gettext_i18n_rails_js'
+    gem 'po_to_json', :group => :development, :require => false
 
 ## To convert your PO files into javascript files you can run:
 
