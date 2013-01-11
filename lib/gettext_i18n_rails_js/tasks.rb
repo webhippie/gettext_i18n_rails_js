@@ -15,7 +15,7 @@ namespace :gettext do
     FileUtils.makedirs(js_locales)
 
     config_file = File.join(Rails.root, 'config', 'gettext_i18n_rails_js.yml')
-    opts = File.file?(config_file) ? YAML.load_file(config_file) : {}
+    opts = File.file?(config_file) ? YAML.load_file(config_file).symbolize_keys : {}
 
     po_files.each do |po_file|
       # Language is used for filenames, while language code is used
