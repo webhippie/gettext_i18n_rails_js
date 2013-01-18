@@ -13,7 +13,10 @@ namespace :gettext do
 
     js_locales = File.join(Rails.root, 'app', 'assets', 'javascripts', 'locale')
     FileUtils.makedirs(js_locales)
-    
+
+    config_file = File.join(Rails.root, 'config', 'gettext_i18n_rails_js.yml')
+    opts = File.file?(config_file) ? YAML.load_file(config_file).symbolize_keys : {}
+
     po_files.each do |po_file|
       # Language is used for filenames, while language code is used
       # as the in-app language code. So for instance, simplified chinese will
@@ -24,7 +27,7 @@ namespace :gettext do
       language_code = language.gsub('_','-')
 
       destination = File.join(js_locales, language)
-      json_string = PoToJson.new(po_file).generate_for_jed(language_code)
+      json_string = PoToJson.new(po_file).generate_for_jed(language_code, opts)
 
       FileUtils.makedirs(destination)
       File.open(File.join(destination, 'app.js'), 'w'){ |file| file.write(json_string) }
@@ -42,7 +45,7 @@ namespace :gettext do
     puts 'translate these files'
     Dir.glob("{app,lib,config,#{locale_path}}/**/*.{rb,erb,haml,slim,js,coffee,handlebars}")
   end
- 
+
   # The parser will use this as the function basename when parsing translations.
   def js_gettext_function
     '__'
