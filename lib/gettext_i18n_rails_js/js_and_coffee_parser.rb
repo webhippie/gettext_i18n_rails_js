@@ -1,4 +1,7 @@
-require 'gettext/tools/xgettext'
+begin
+  require 'gettext/tools/xgettext'
+rescue LoadError
+end
 
 module GettextI18nRailsJs
   class JsAndCoffeeParser
