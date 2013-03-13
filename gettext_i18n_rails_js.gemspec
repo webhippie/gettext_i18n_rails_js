@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = "gettext_i18n_rails will find translations inside your .js and .coffee files, then it will create JSON versions of your .PO files and will let you serve them with the rest of your assets, thus letting you access all your translations offline from client side javascript."
   s.version = GettextI18nRailsJs::VERSION
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "Readme.md"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "gettext_i18n_rails", ">= 0.7.1"
