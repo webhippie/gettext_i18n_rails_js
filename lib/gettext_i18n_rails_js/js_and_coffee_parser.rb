@@ -36,11 +36,11 @@ module GettextI18nRailsJs
 
       # We first parse full invocations
       invoke_regex = /
-        (\b[snN]?#{_})                # Matches the function call grouping the method used (__, n__, N__, etc)
+        (\b[snN]?#{_})               # Matches the function call grouping the method used (__, n__, N__, etc)
           \(                         # and a parenthesis to start the arguments to the function.
             (('.*?'|                 # Then a token inside the argument list, like a single quoted string
               ".*?"|                 # ...Double quote string
-              [a-zA-Z0-9_\.()]*|     # ...a number, variable name, or called function lik: 33, foo, Foo.bar()
+              [a-zA-Z0-9_\.()]*?|    # ...a number, variable name, or called function lik: 33, foo, Foo.bar()
               [ ]|                   # ...a white space
               ,)                     # ...or a comma, which separates all of the above.
             *)                       # There may be many arguments to the same function call.
