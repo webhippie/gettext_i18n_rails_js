@@ -48,7 +48,7 @@ describe GettextI18nRailsJs::JsAndCoffeeParser do
         parser.parse(path, []).should == []
       end
     end
-    
+
     it 'Does find messages in interpolated multi-line strings' do
       source = '''
         """ Parser should grab
@@ -57,12 +57,12 @@ describe GettextI18nRailsJs::JsAndCoffeeParser do
       '''
       with_file source do |path|
         parser.parse(path, []).should == [
-          ["This", "#{path}:1"],
-          ["known bug", "#{path}:1"]
+          ["This", "#{path}:3"],
+          ["known bug", "#{path}:3"]
         ]
       end
     end
-    
+
     it 'finds messages with newlines and tabs in them' do
       with_file 'bla = __("xxxx\n\t")' do |path|
         parser.parse(path, []).should == [
@@ -127,29 +127,29 @@ describe GettextI18nRailsJs::JsAndCoffeeParser do
       GettextI18nRailsJs::JsAndCoffeeParser.js_gettext_function = '__'
     end
   end
-  
+
   describe 'mixed use tests' do
     it 'parses a full js file' do
       path = File.join(File.dirname(__FILE__), '../fixtures/example.js')
       parser.parse(path, []).should == [
-        ['json', "#{path}:1"],
-        ["item\000items", "#{path}:1"],
-        ['hello {yourname}', "#{path}:1"],
-        ['new-trans', "#{path}:1"],
-        ["namespaced\004trans", "#{path}:1"],
-        ['Hello\nBuddy', "#{path}:1"]
+        ['json', "#{path}:2"],
+        ["item\000items", "#{path}:3"],
+        ['hello {yourname}', "#{path}:6"],
+        ['new-trans', "#{path}:9"],
+        ["namespaced\004trans", "#{path}:10"],
+        ['Hello\nBuddy', "#{path}:11"]
       ]
     end
     it 'parses a full coffee file' do
       path = File.join(File.dirname(__FILE__), '../fixtures/example.coffee')
       parser.parse(path, []).should == [
-        ['json', "#{path}:1"],
-        ["item\000items", "#{path}:1"],
-        ['hello {yourname}', "#{path}:1"],
-        ['new-trans', "#{path}:1"],
-        ["namespaced\004trans", "#{path}:1"],
-        ['Hello\nBuddy', "#{path}:1"],
-        ['Multi-line', "#{path}:1"]
+        ['json', "#{path}:2"],
+        ["item\000items", "#{path}:3"],
+        ['hello {yourname}', "#{path}:5"],
+        ['new-trans', "#{path}:8"],
+        ["namespaced\004trans", "#{path}:9"],
+        ['Hello\nBuddy', "#{path}:11"],
+        ['Multi-line', "#{path}:14"]
       ]
     end
   end

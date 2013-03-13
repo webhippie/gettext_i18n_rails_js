@@ -2,11 +2,11 @@ require 'gettext/tools/xgettext'
 
 module GettextI18nRailsJs
   class JsAndCoffeeParser
-    
+
     class << self
       # The gettext function name can be configured at the module level as js_gettext_function
       # This is to provide a way to avoid conflicts with other javascript libraries.
-      # You only need to define the base function name to replace '_' and all the 
+      # You only need to define the base function name to replace '_' and all the
       # other variants (s_, n_, N_) will be deduced automatically.
       attr_accessor :js_gettext_function
     end
@@ -34,7 +34,7 @@ module GettextI18nRailsJs
     def self.parse(file, msgids = [])
       _ = self.js_gettext_function
 
-      # We first parse full invocations 
+      # We first parse full invocations
       invoke_regex = /
         (\b[snN]?#{_})                # Matches the function call grouping the method used (__, n__, N__, etc)
           \(                         # and a parenthesis to start the arguments to the function.
@@ -47,18 +47,20 @@ module GettextI18nRailsJs
           \)                         # function call closing parenthesis
       /x
 
-      File.read(file).scan(invoke_regex).collect do |function, arguments|
-        separator = function == "n#{_}" ? "\000" : "\004"
-        key = arguments.scan(/('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/).
-          collect{|match| match.first[1..-2]}.
-          join(separator)
-        next if key == ''
-        key.gsub!("\n", '\n')
-        key.gsub!("\t", '\t')
-        key.gsub!("\0", '\0')
-          
-        [key, "#{file}:1"]
-      end.compact
+      File.new(file).each_line.each_with_index.collect do |line, idx|
+        line.scan(invoke_regex).collect do |function, arguments|
+          separator = function == "n#{_}" ? "\000" : "\004"
+          key = arguments.scan(/('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/).
+            collect{|match| match.first[1..-2]}.
+            join(separator)
+          next if key == ''
+          key.gsub!("\n", '\n')
+          key.gsub!("\t", '\t')
+          key.gsub!("\0", '\0')
+
+          [key, "#{file}:#{idx+1}"]
+        end
+      end.inject(:+).compact
     end
 
   end
