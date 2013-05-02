@@ -34,17 +34,21 @@ module GettextI18nRailsJs
     def self.parse(file, msgids = [])
       _ = self.js_gettext_function
 
+      arg_regex = /
+        \s*                     # Some whitespace
+        ('(?:[^'\\]|\\.)*?'|    # A token inside the argument list, like a single quoted string
+         "(?:[^"\\]|\\.)*?"|    # ...Double quote string, both support escapes
+         [a-zA-Z0-9_\.()]*?)    # ...a number, variable name, or called function lik: 33, foo, Foo.bar()
+        \s*                     # More whitespace
+      /x
+
       # We first parse full invocations
       invoke_regex = /
-        (\b[snN]?#{_})               # Matches the function call grouping the method used (__, n__, N__, etc)
-          \(                         # and a parenthesis to start the arguments to the function.
-            (('.*?'|                 # Then a token inside the argument list, like a single quoted string
-              ".*?"|                 # ...Double quote string
-              [a-zA-Z0-9_\.()]*?|    # ...a number, variable name, or called function lik: 33, foo, Foo.bar()
-              [ ]|                   # ...a white space
-              ,)                     # ...or a comma, which separates all of the above.
-            *)                       # There may be many arguments to the same function call.
-          \)                         # function call closing parenthesis
+        (\b[snN]?#{_})          # Matches the function call grouping the method used (__, n__, N__, etc)
+          \(                    # and a parenthesis to start the arguments to the function.
+            ((#{arg_regex},)*   # There may be many arguments to the same function call
+              #{arg_regex})?    # then the last, or only argument to the function call.
+          \)                    # function call closing parenthesis
       /x
 
       File.new(file).each_line.each_with_index.collect do |line, idx|
