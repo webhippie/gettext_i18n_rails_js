@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "gettext_i18n_rails", ">= 0.7.1"
-  s.add_dependency "po_to_json", '>= 0.0.6'
+  s.add_dependency "po_to_json", '>= 0.0.7'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec", "~>2"
