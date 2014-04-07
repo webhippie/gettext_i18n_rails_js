@@ -9,6 +9,10 @@ describe GettextI18nRailsJs::HandlebarsParser do
       parser.target?('foo/bar/xxx.handlebars').should == true
     end
 
+    it "targets .mustache" do
+      parser.target?('foo/bar/xxx.mustache').should == true
+    end
+
     it "targets .handlebars.erb" do
       parser.target?('foo/bar/xxx.handlebars.erb').should == true
     end

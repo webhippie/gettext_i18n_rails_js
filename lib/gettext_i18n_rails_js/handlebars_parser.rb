@@ -11,7 +11,7 @@ module GettextI18nRailsJs
     self.handlebars_gettext_function = '_'
 
     def self.target?(file)
-      [/\.handlebars\Z/, /\.handlebars.erb\Z/].any? {|regexp| file.match regexp}
+      [/\.handlebars\Z/, /\.handlebars.erb\Z/, /\.mustache\Z/].any? {|regexp| file.match regexp}
     end
 
     # We're lazy and klumsy, so this is a regex based parser that looks for

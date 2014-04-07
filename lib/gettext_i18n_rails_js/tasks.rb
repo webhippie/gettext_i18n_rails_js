@@ -43,7 +43,7 @@ namespace :gettext do
 
   def files_to_translate
     puts 'translate these files'
-    Dir.glob("{app,lib,config,#{locale_path}}/**/*.{rb,erb,haml,slim,js,coffee,handlebars}")
+    Dir.glob("{app,lib,config,#{locale_path}}/**/*.{rb,erb,haml,slim,js,coffee,handlebars,mustache}")
   end
 
   # The parser will use this as the function basename when parsing translations.
