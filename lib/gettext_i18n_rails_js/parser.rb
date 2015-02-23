@@ -23,9 +23,10 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+require_relative "parser/javascript"
+require_relative "parser/handlebars"
+
 module GettextI18nRailsJs
-  module Rails
-    class Engine < ::Rails::Engine
-    end
+  module Parser
   end
 end

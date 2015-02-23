@@ -23,9 +23,12 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-module GettextI18nRailsJs
-  module Rails
-    class Engine < ::Rails::Engine
-    end
+def with_file(content)
+  require "tempfile"
+
+  Tempfile.open("gettext_i18n_rails_js") do |f|
+    f.write(content)
+    f.close
+    yield f.path
   end
 end

@@ -1,49 +1,114 @@
 # GettextI18nRailsJs
-[![Build Status](https://secure.travis-ci.org/nubis/gettext_i18n_rails_js.png?branch=master)](https://travis-ci.org/nubis/gettext_i18n_rails_js)
 
-GettextI18nRailsJs extends [gettext_i18n_rails](https://github.com/grosser/gettext_i18n_rails) making your .po files available to client side javascript as JSON
+[![Gem Version](http://img.shields.io/gem/v/gettext_i18n_rails_js.svg)](https://rubygems.org/gems/gettext_i18n_rails_js)
+[![Build Status](https://secure.travis-ci.org/webhippie/gettext_i18n_rails_js.svg)](https://travis-ci.org/webhippie/gettext_i18n_rails_js)
+[![Code Climate](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js.svg)](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js)
+[![Test Coverage](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js/badges/coverage.svg)](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js)
+[![Dependency Status](https://gemnasium.com/webhippie/gettext_i18n_rails_js.svg)](https://gemnasium.com/webhippie/gettext_i18n_rails_js)
 
-It will find translations inside your .js and .coffee files, then it will create JSON versions of your .PO files so you can serve them with the rest of your assets, thus letting you access all your translations offline from client side javascript.
+Extends [gettext_i18n_rails](https://github.com/grosser/gettext_i18n_rails),
+making your .PO files available to client side javascript as JSON. It will find
+translations inside your .js, .coffee, .handlebars and .mustache files, then it
+will create JSON versions of your .PO files so you can serve them with the rest
+of your assets, thus letting you access all your translations offline from
+client side javascript.
+
+
+## Versions
+
+This gem is tested on the following versions:
+
+* Ruby
+  * 1.9.3
+  * 2.0.0
+  * 2.1.0
+* Rails
+  * 3.2.21
+  * 4.0.13
+  * 4.1.9
+  * 4.2.0
+
 
 ## Installation
 
-Requires rails 3.2 or later.
+```ruby
+gem "gettext_i18n_rails_js", "~> 1.0.0"
+```
 
-#### Add the following to your gemfile:
 
-    gem 'gettext_i18n_rails_js'
+## Usage
 
-## To convert your PO files into javascript files you can run:
+set up you rails application with gettext support as usual, afterwards just
+execute the following rake task to export your translations to JSON:
 
-    rake gettext:po_to_json
+```bash
+rake gettext:po_to_json
+```
 
-This will reconstruct the `locale/<lang>/app.po` structure as javascript files inside `app/assets/javascripts/locale/<lang>/app.js`
+Per default this will reconstruct the ```locale/<lang>/app.po``` structure as
+javascript files inside ```app/assets/javascripts/locale/<lang>/app.js```
 
-## Using translations in your javascript
+The gem provides the [Jed](https://github.com/SlexAxton/Jed) library to use the
+generated javascript files. It also provides a global ```__``` function that
+maps to `Jed#gettext`. The Jed instance used by the client side ```__```
+function is pre-configured with the ```lang``` attribute specified in your main
+HTML tag. Before anything, make sure your page's HTML tag includes a valid
+```lang``` attribute, for example:
 
-The gem provides the Jed library to use the generated javascript files. (http://slexaxton.github.com/Jed/some) 
-It also provides a global `__` function that maps to `Jed#gettext`.
-The Jed instance used by the client side `__` function is pre-configured with the 'lang' specified in your main html tag.
-Before anything, make sure your page's html tag includes a valid 'lang' attribute, for example:
+```haml
+%html{ manifest: "", lang: I18n.locale }
+```
 
-    %html{:manifest => '', :lang => "#{I18n.locale}"}
+Once you're sure your page is configured with a locale, then you should add
+both your javascript locale files and the provided javascripts to your
+application.js
 
-Once you're sure your page is configured with a locale, then you should add both your javascript locale files and the provided javascripts to your application.js
+```js
+//= require_tree ./locale
+//= require gettext/all
+```
 
-    //= require_tree ./locale 
-    //= require gettext/all
+The default function name is ```window.__```, to avoid conflicts with
+underscore.js. If you want to alias the function to something else in your
+javascript you should also instruct the javascript and coffeescript parser to
+look for a different function when finding your translations within the config
+file ```config/gettext_i18n_rails_js.yml```, these are valid available options:
 
-## Avoiding conflicts with other libraries
+```yml
+output_path: "app/assets/javascripts/locale"
+handlebars_gettext_function: "_"
+javascript_gettext_function: "__"
+jed_options:
+  pretty: false
+```
 
-The default function name is 'window.__', to avoid conflicts with 'underscore.js'. If you want to alias the function to something
-else in your javascript you should also instruct the javascript and coffeescript parser to look for a different function
-when finding your translations:
 
-lib/tasks/gettext.rake:
+## Todo
 
-    namespace :gettext do
-      def js_gettext_function
-        '_' #just revert to the traditional underscore.
-      end
-    end
+* More deep testing against multiple Rails versions
+* Extend the current test suite, especially handlebars
 
+
+## Contributing
+
+Fork -> Patch -> Spec -> Push -> Pull Request
+
+
+## Authors
+
+* [Thomas Boerger](https://github.com/tboerger)
+* [Nubis](https://github.com/nubis)
+* [Other contributors](https://github.com/webhippie/gettext_i18n_rails_js/graphs/contributors)
+
+
+## License
+
+MIT
+
+
+## Copyright
+
+```
+Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
+Copyright (c) 2015 Webhippie <http://www.webhippie.de>
+```
