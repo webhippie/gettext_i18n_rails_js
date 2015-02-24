@@ -46,7 +46,7 @@
 
   window.s__ = function(key) {
     return window.__(key).split('|').pop();
-  }
+  };
 
   window.gettext = window.__;
   window.ngettext = window.n__;
