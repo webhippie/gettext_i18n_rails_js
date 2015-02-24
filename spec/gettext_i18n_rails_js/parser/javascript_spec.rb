@@ -266,7 +266,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "accepts changing the translate method" do
-      parser.javascript_gettext_function = "gettext"
+      parser.gettext_function = "gettext"
 
       content = <<-'EOF'
         var string = \"this\" + gettext('json') + 'should be translated';
@@ -282,7 +282,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
         )
       end
 
-      parser.javascript_gettext_function = "__"
+      parser.gettext_function = "__"
     end
   end
 
@@ -315,7 +315,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "accepts changing the translate method" do
-      parser.javascript_gettext_function = "gettext"
+      parser.gettext_function = "gettext"
 
       content = <<-'EOF'
         string = \"this\" + gettext('json')
@@ -335,7 +335,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
         )
       end
 
-      parser.javascript_gettext_function = "__"
+      parser.gettext_function = "__"
     end
   end
 end

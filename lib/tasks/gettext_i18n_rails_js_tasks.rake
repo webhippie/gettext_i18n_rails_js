@@ -29,10 +29,10 @@ namespace :gettext do
   desc "Convert PO files to JS files"
   task po_to_json: :environment do
     GettextI18nRailsJs::Parser::Javascript
-      .javascript_gettext_function = config[:javascript_gettext_function]
+      .gettext_function = config[:javascript_function]
 
     GettextI18nRailsJs::Parser::Handlebars
-      .handlebars_gettext_function = config[:handlebars_gettext_function]
+      .gettext_function = config[:handlebars_function]
 
     if files_list.empty?
       puts "Couldn't find PO files in #{locale_path}, run 'rake gettext:find'"
@@ -105,8 +105,8 @@ namespace :gettext do
           "javascripts",
           "locale"
         ),
-        handlebars_gettext_function: "_",
-        javascript_gettext_function: "__",
+        handlebars_function: "__",
+        javascript_function: "__",
         jed_options: {
           pretty: false
         }

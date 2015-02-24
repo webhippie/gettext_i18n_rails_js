@@ -76,8 +76,8 @@ file ```config/gettext_i18n_rails_js.yml```, these are valid available options:
 
 ```yml
 output_path: "app/assets/javascripts/locale"
-handlebars_gettext_function: "_"
-javascript_gettext_function: "__"
+handlebars_function: "__"
+javascript_function: "__"
 jed_options:
   pretty: false
 ```

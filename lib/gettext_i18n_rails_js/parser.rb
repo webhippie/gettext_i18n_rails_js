@@ -23,6 +23,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+require_relative "parser/base"
 require_relative "parser/javascript"
 require_relative "parser/handlebars"
 

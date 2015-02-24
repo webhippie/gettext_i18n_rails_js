@@ -25,22 +25,13 @@
 
 require "gettext/tools/xgettext"
 require "gettext_i18n_rails/gettext_hooks"
+require_relative "base"
 
 module GettextI18nRailsJs
   module Parser
     module Handlebars
+      include Base
       extend self
-
-      # The gettext function name can be configured at the module level as
-      # handlebars_gettext_function. This is to provide a way to avoid
-      # conflicts with other javascript libraries. You only need to define
-      # the base function name to replace "_" and all the other variants
-      # (s_, n_, N_) will be deduced automatically.
-      attr_accessor :handlebars_gettext_function
-
-      def handlebars_gettext_function
-        @handlebars_gettext_function ||= "_"
-      end
 
       def target?(file)
         [
@@ -53,43 +44,7 @@ module GettextI18nRailsJs
         ].any? { |regexp| file.match regexp }
       end
 
-      # We're lazy and klumsy, so this is a regex based parser that looks for
-      # invocations of the various gettext functions. Once captured, we scan
-      # them once again to fetch all the function arguments. Invoke regex
-      # captures like this:
-      #
-      # source: "{{ _ "foo"}}"
-      # matches:
-      # [0]: __('foo')
-      # [1]: __
-      # [2]: 'foo'
-      #
-      # source: "{{ _ "foo" "foos" 3}}"
-      # matches:
-      # [0]: __('foo', 'foos', 3)
-      # [1]: __
-      # [2]: 'foo', 'foos', 3
-      def parse(file, _msgids = [])
-        collect_for(file) do |function, arguments, line|
-          key = arguments.scan(
-            /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/
-          ).collect do |match|
-            match.first[1..-2]
-          end.join(separator_for(function))
-
-          next if key == ""
-          results_for(key, file, line)
-        end
-      end
-
       protected
-
-      def cleanup_value(value)
-        value
-          .gsub("\n", "\n")
-          .gsub("\t", "\t")
-          .gsub("\0", "\0")
-      end
 
       def collect_for(value)
         ::File.read(
@@ -97,21 +52,6 @@ module GettextI18nRailsJs
         ).scan(invoke_regex).collect do |_whole, function, arguments|
           yield(function, arguments, 1)
         end.compact
-      end
-
-      def separator_for(value)
-        if value == "n#{handlebars_gettext_function}"
-          "\000"
-        else
-          "\004"
-        end
-      end
-
-      def results_for(key, file, line)
-        [
-          cleanup_value(key),
-          [file, line].join(":")
-        ]
       end
 
       def invoke_regex
@@ -125,7 +65,7 @@ module GettextI18nRailsJs
 
         /
           \B[{]{2}(
-            ([snN]?#{handlebars_gettext_function})
+            ([snN]?#{gettext_function})
             \s+
             (
               ".*?"

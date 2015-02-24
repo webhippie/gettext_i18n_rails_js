@@ -25,22 +25,13 @@
 
 require "gettext/tools/xgettext"
 require "gettext_i18n_rails/gettext_hooks"
+require_relative "base"
 
 module GettextI18nRailsJs
   module Parser
     module Javascript
+      include Base
       extend self
-
-      # The gettext function name can be configured at the module level as
-      # javascript_gettext_function. This is to provide a way to avoid
-      # conflicts with other javascript libraries. You only need to define
-      # the base function name to replace "_" and all the other variants
-      # (s_, n_, N_) will be deduced automatically.
-      attr_accessor :javascript_gettext_function
-
-      def javascript_gettext_function
-        @javascript_gettext_function ||= "__"
-      end
 
       def target?(file)
         [
@@ -49,43 +40,7 @@ module GettextI18nRailsJs
         ].include? ::File.extname(file)
       end
 
-      # We're lazy and klumsy, so this is a regex based parser that looks for
-      # invocations of the various gettext functions. Once captured, we scan
-      # them once again to fetch all the function arguments. Invoke regex
-      # captures like this:
-      #
-      # source: "#{ __('hello') } #{ __("wor)ld") }"
-      # matches:
-      # [0]: __('hello')
-      # [1]: __
-      # [2]: 'hello'
-      #
-      # source: __('item', 'items', 33)
-      # matches:
-      # [0]: __('item', 'items', 33)
-      # [1]: __
-      # [2]: 'item', 'items', 33
-      def parse(file, _msgids = [])
-        collect_for(file) do |function, arguments, line|
-          key = arguments.scan(
-            /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/
-          ).collect do |match|
-            match.first[1..-2]
-          end.join(separator_for(function))
-
-          next if key == ""
-          results_for(key, file, line)
-        end
-      end
-
       protected
-
-      def cleanup_value(value)
-        value
-          .gsub("\n", "\n")
-          .gsub("\t", "\t")
-          .gsub("\0", "\0")
-      end
 
       def collect_for(value)
         ::File.new(
@@ -95,21 +50,6 @@ module GettextI18nRailsJs
             yield(function, arguments, idx + 1)
           end
         end.inject(:+).compact
-      end
-
-      def separator_for(value)
-        if value == "n#{javascript_gettext_function}"
-          "\000"
-        else
-          "\004"
-        end
-      end
-
-      def results_for(key, file, line)
-        [
-          cleanup_value(key),
-          [file, line].join(":")
-        ]
       end
 
       def invoke_regex
@@ -122,7 +62,7 @@ module GettextI18nRailsJs
         #
 
         /
-          (\b[snN]?#{javascript_gettext_function})
+          (\b[snN]?#{gettext_function})
           \(
             (
               (#{arg_regex},)*

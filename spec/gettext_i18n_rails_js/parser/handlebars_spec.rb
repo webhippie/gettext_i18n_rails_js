@@ -60,7 +60,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
   describe "#parse" do
     it "finds plural messages" do
       content = <<-EOF
-        <div>{{n_ "xxxx" "yyyy\" "zzzz" some_count}}</div>
+        <div>{{n__ "xxxx" "yyyy\" "zzzz" some_count}}</div>
       EOF
 
       with_file content do |path|
@@ -76,7 +76,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
 
     it "finds namespaced messages" do
       content = <<-EOF
-        <div>{{_ "xxxx", "yyyy"}}</div>
+        <div>{{__ "xxxx", "yyyy"}}</div>
       EOF
 
       with_file content do |path|
@@ -92,7 +92,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
 
     it "finds simple messages" do
       content = <<-EOF
-        <div>{{_ "blah"}}</div>
+        <div>{{__ "blah"}}</div>
       EOF
 
       with_file content do |path|
@@ -202,7 +202,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
 
     it "does not find nonstring messages" do
       content = <<-EOF
-        <div>{{_ bar}}</div>
+        <div>{{__ bar}}</div>
       EOF
 
       with_file content do |path|
@@ -217,8 +217,8 @@ describe GettextI18nRailsJs::Parser::Handlebars do
     it "does not parse internal parentheses" do
       content = <<-EOF
         <div>
-          {{_ "text (which is great) and parentheses()"}}
-          {{_ "foobar"}}
+          {{__ "text (which is great) and parentheses()"}}
+          {{__ "foobar"}}
         </div>
       EOF
 
@@ -273,7 +273,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
     end
 
     it "accepts changing the translate method" do
-      parser.handlebars_gettext_function = "gettext"
+      parser.gettext_function = "gettext"
 
       content = <<-EOF
         <div>
@@ -295,7 +295,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         )
       end
 
-      parser.handlebars_gettext_function = "__"
+      parser.gettext_function = "__"
     end
   end
 end
