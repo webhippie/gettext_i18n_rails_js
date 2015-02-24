@@ -26,6 +26,7 @@
 //= require_self
 
 (function() {
+  var locales = locales || {};
   var locale = document.getElementsByTagName('html')[0].lang;
 
   if(!locale) {
@@ -44,7 +45,7 @@
   };
 
   window.s__ = function(key) {
-    return __(key).split('|').pop();
+    return window.__(key).split('|').pop();
   }
 
   window.gettext = window.__;
