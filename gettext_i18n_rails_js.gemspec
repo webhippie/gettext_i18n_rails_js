@@ -1,25 +1,71 @@
-$:.push File.expand_path("../lib", __FILE__)
+# -*- coding: UTF-8 -*-
+#
+# Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
+# Copyright (c) 2015 Webhippie <http://www.webhippie.de>
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
 
-# Maintain your gem's version:
+$LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require "gettext_i18n_rails_js/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name = "gettext_i18n_rails_js"
-  s.authors = ["Nubis"]
-  s.email = "nubis@woobiz.com.ar"
-  s.homepage = "http://github.com/nubis/gettext_i18n_rails_js"
-  s.summary = "Extends gettext_i18n_rails making your .po files available to client side javascript as JSON"
-  s.description = "gettext_i18n_rails will find translations inside your .js and .coffee files, then it will create JSON versions of your .PO files and will let you serve them with the rest of your assets, thus letting you access all your translations offline from client side javascript."
-  s.version = GettextI18nRailsJs::VERSION
+  s.version = GettextI18nRailsJs::Version
+  s.date = Time.now.strftime("%F")
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
+  s.authors = ["Thomas Boerger", "Nubis"]
+  s.email = ["thomas@webhippie.de", "nubis@woobiz.com.ar"]
+
+  s.summary = <<-EOF
+    Extends gettext_i18n_rails making your .po files available to client side
+    javascript as JSON
+  EOF
+
+  s.description = <<-EOF
+    It will find translations inside your .js and .coffee files, then it will
+    create JSON versions of your .PO files and will let you serve them with the
+    rest of your assets, thus letting you access all your translations offline
+    from client side javascript.
+  EOF
+
+  s.homepage = "https://github.com/webhippie/gettext_i18n_rails_js"
+  s.license = "MIT"
+
+  s.files = ["CHANGELOG.md", "README.md", "LICENSE"]
+  s.files += Dir.glob("lib/**/*")
+
+  s.test_files = Dir.glob("spec/**/*")
+
+  s.executables = []
+  s.require_paths = ["lib"]
+
+  s.required_ruby_version = ">= 1.9.3"
+
+  s.add_development_dependency "bundler"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "yard"
+  s.add_development_dependency "rspec"
 
   s.add_dependency "rails", ">= 3.2.0"
+  s.add_dependency "gettext", ">= 3.0.2"
   s.add_dependency "gettext_i18n_rails", ">= 0.7.1"
-  s.add_dependency "po_to_json", '>= 0.0.7'
-
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec", "~>2"
-  s.add_development_dependency "gettext", ">= 3.0.2"
+  s.add_dependency "po_to_json", ">= 0.1.0"
 end
