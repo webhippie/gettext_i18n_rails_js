@@ -29,15 +29,15 @@ namespace :gettext do
   desc "Convert PO files to JS files"
   task po_to_json: :environment do
     GettextI18nRailsJs::Parser::Javascript
-      .gettext_function = config[:javascript_function]
+      .gettext_function = GettextI18nRailsJs::RakeTask.config[:javascript_function]
 
     GettextI18nRailsJs::Parser::Handlebars
-      .gettext_function = config[:handlebars_function]
+      .gettext_function = GettextI18nRailsJs::RakeTask.config[:handlebars_function]
 
-    if files_list.empty?
+    if GettextI18nRailsJs::RakeTask.files_list.empty?
       puts "Couldn't find PO files in #{locale_path}, run 'rake gettext:find'"
     else
-      files_list.each do |input|
+      GettextI18nRailsJs::RakeTask.files_list.each do |input|
         # Language is used for filenames, while language code is used as the
         # in-app language code. So for instance, simplified chinese will live
         # in app/assets/locale/zh_CN/app.js but inside the file the language
@@ -47,14 +47,14 @@ namespace :gettext do
         language = input.dirname.basename.to_s
         language_code = language.gsub("_", "-")
 
-        destination = output_path.join(language)
+        destination = GettextI18nRailsJs::RakeTask.output_path.join(language)
         destination.mkpath
 
         json = PoToJson.new(
           input.to_s
         ).generate_for_jed(
           language_code,
-          config[:jed_options].symbolize_keys
+          GettextI18nRailsJs::RakeTask.config[:jed_options].symbolize_keys
         )
 
         destination.join("app.js").open("w") do |f|
@@ -75,79 +75,86 @@ namespace :gettext do
     end
   end
 
-  def files_list
-    Pathname.glob(
-      ::File.join(
-        locale_path,
-        "**",
-        "*.po"
-      )
-    )
-  end
+  # Avoid methods exposing globally
+  module GettextI18nRailsJs
+    module RakeTask
+      extend self
 
-  def output_path
-    Rails.root.join(
-      config[:output_path]
-    )
-  end
+      def files_list
+        Pathname.glob(
+          ::File.join(
+            locale_path,
+            "**",
+            "*.po"
+          )
+        )
+      end
 
-  def config
-    @config ||= begin
-      file = Rails.root.join(
-        "config",
-        "gettext_i18n_rails_js.yml"
-      )
+      def output_path
+        Rails.root.join(
+          config[:output_path]
+        )
+      end
 
-      defaults = {
-        output_path: File.join(
+      def config
+        @config ||= begin
+          file = Rails.root.join(
+            "config",
+            "gettext_i18n_rails_js.yml"
+          )
+
+          defaults = {
+            output_path: File.join(
+              "app",
+              "assets",
+              "javascripts",
+              "locale"
+            ),
+            handlebars_function: "__",
+            javascript_function: "__",
+            jed_options: {
+              pretty: false
+            }
+          }
+
+          if file.exist?
+            yaml = YAML.load_file(file) || {}
+
+            defaults.deep_merge(
+              yaml
+            ).with_indifferent_access
+          else
+            defaults.with_indifferent_access
+          end
+        end
+      end
+
+      # Required for gettext to filter the files
+      def files_to_translate
+        folders = [
           "app",
-          "assets",
-          "javascripts",
-          "locale"
-        ),
-        handlebars_function: "__",
-        javascript_function: "__",
-        jed_options: {
-          pretty: false
-        }
-      }
+          "lib",
+          "config",
+          locale_path
+        ].join(",")
 
-      if file.exist?
-        yaml = YAML.load_file(file) || {}
+        exts = [
+          "rb",
+          "erb",
+          "haml",
+          "slim",
+          "rhtml",
+          "js",
+          "coffee",
+          "handlebars",
+          "hbs",
+          "mustache"
+        ].join(",")
 
-        defaults.deep_merge(
-          yaml
-        ).with_indifferent_access
-      else
-        defaults.with_indifferent_access
+        Dir.glob(
+          "{#{folders}}/**/*.{#{exts}}"
+        )
       end
     end
-  end
-
-  # Required for gettext to filter the files
-  def files_to_translate
-    folders = [
-      "app",
-      "lib",
-      "config",
-      locale_path
-    ].join(",")
-
-    exts = [
-      "rb",
-      "erb",
-      "haml",
-      "slim",
-      "rhtml",
-      "js",
-      "coffee",
-      "handlebars",
-      "hbs",
-      "mustache"
-    ].join(",")
-
-    Dir.glob(
-      "{#{folders}}/**/*.{#{exts}}"
-    )
   end
 end
