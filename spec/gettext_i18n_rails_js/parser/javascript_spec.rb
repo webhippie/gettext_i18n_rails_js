@@ -236,6 +236,16 @@ describe GettextI18nRailsJs::Parser::Javascript do
         )
       end
     end
+
+    it "does not parse empty files" do
+      content = ""
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq([])
+        )
+      end
+    end
   end
 
   describe "parses javascript files" do
