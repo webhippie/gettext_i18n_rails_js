@@ -49,7 +49,7 @@ module GettextI18nRailsJs
           line.scan(invoke_regex).collect do |function, arguments|
             yield(function, arguments, idx + 1)
           end
-        end.inject(:+).compact
+        end.inject([], :+).compact
       end
 
       def invoke_regex
