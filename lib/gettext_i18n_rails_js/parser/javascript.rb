@@ -43,13 +43,14 @@ module GettextI18nRailsJs
       protected
 
       def collect_for(value)
-        ::File.new(
-          value
-        ).each_line.each_with_index.collect do |line, idx|
-          line.scan(invoke_regex).collect do |function, arguments|
-            yield(function, arguments, idx + 1)
+        results = ::File.open(value) do |f|
+          f.each_line.each_with_index.collect do |line, idx|
+            line.scan(invoke_regex).collect do |function, arguments|
+              yield(function, arguments, idx + 1)
+            end
           end
-        end.inject(:+).compact
+        end
+        results.empty? ? results : results.inject(:+).compact
       end
 
       def invoke_regex
