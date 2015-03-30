@@ -23,32 +23,53 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile", __FILE__)
-
-if File.exist? ENV["BUNDLE_GEMFILE"]
-  require "bundler"
-  Bundler.setup(:default)
-else
-  gem "rails", version: ">= 3.2.0"
-  gem "gettext", version: ">= 3.0.2"
-  gem "gettext_i18n_rails", version: ">= 0.7.1"
-  gem "po_to_json", version: ">= 0.1.0"
-end
-
-require "rails"
-require "gettext"
-require "gettext_i18n_rails"
-require "po_to_json"
-
-require_relative "gettext_i18n_rails_js/version"
-require_relative "gettext_i18n_rails_js/parser"
-require_relative "gettext_i18n_rails_js/config"
-require_relative "gettext_i18n_rails_js/engine"
-
 module GettextI18nRailsJs
-  class << self
-    def config(&block)
-      @config ||= GettextI18nRailsJs::Config.new(&block)
+  class Config
+    attr_accessor :output_path
+    attr_accessor :handlebars_function
+    attr_accessor :javascript_function
+    attr_accessor :jed_options
+
+    def initialize(&block)
+      @output_path = defaults[:output_path]
+      @handlebars_function = defaults[:handlebars_function]
+      @javascript_function = defaults[:javascript_function]
+      @jed_options = defaults[:jed_options].symbolize_keys
+
+      instance_eval(&block) if block_given?
+    end
+
+    protected
+
+    def defaults
+      file = ::Rails.root.join(
+        "config",
+        "gettext_i18n_rails_js.yml"
+      )
+
+      values = {
+        output_path: File.join(
+          "app",
+          "assets",
+          "javascripts",
+          "locale"
+        ),
+        handlebars_function: "__",
+        javascript_function: "__",
+        jed_options: {
+          pretty: false
+        }
+      }
+
+      if file.exist?
+        yaml = YAML.load_file(file) || {}
+
+        values.deep_merge(
+          yaml
+        ).with_indifferent_access
+      else
+        values.with_indifferent_access
+      end
     end
   end
 end

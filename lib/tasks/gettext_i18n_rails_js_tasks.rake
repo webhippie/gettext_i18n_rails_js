@@ -29,51 +29,7 @@ require "gettext_i18n_rails_js/task"
 namespace :gettext do
   desc "Convert PO files to JS files"
   task po_to_json: :environment do
-    GettextI18nRailsJs::Parser::Javascript
-      .gettext_function = GettextI18nRailsJs::Task.config[:javascript_function]
-
-    GettextI18nRailsJs::Parser::Handlebars
-      .gettext_function = GettextI18nRailsJs::Task.config[:handlebars_function]
-
-    if GettextI18nRailsJs::Task.files_list.empty?
-      puts "Couldn't find PO files in #{locale_path}, run 'rake gettext:find'"
-    else
-      GettextI18nRailsJs::Task.files_list.each do |input|
-        # Language is used for filenames, while language code is used as the
-        # in-app language code. So for instance, simplified chinese will live
-        # in app/assets/locale/zh_CN/app.js but inside the file the language
-        # will be referred to as locales['zh-CN']. This is to adapt to the
-        # existing gettext_rails convention.
-
-        language = input.dirname.basename.to_s
-        language_code = language.gsub("_", "-")
-
-        destination = GettextI18nRailsJs::Task.output_path.join(language)
-        destination.mkpath
-
-        json = PoToJson.new(
-          input.to_s
-        ).generate_for_jed(
-          language_code,
-          GettextI18nRailsJs::Task.config[:jed_options].symbolize_keys
-        )
-
-        destination.join("app.js").open("w") do |f|
-          f.rewind
-          f.write(json)
-        end
-
-        puts "Created app.js in #{destination}"
-      end
-
-      puts
-      puts "All files created, make sure they are being added to your assets."
-      puts "If they are not, you can add them with this line (configurable):"
-      puts
-      puts "//= require_tree ./locale"
-      puts "//= require gettext/all"
-      puts
-    end
+    GettextI18nRailsJs::Task.po_to_json
   end
 
   # Required for gettext to filter the files

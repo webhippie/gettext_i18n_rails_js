@@ -82,6 +82,22 @@ jed_options:
   pretty: false
 ```
 
+If you prefer an initializer file within your rails application you can use
+that in favor of the YML configuration as well:
+
+```ruby
+GettextI18nRailsJs.config do |config|
+  config.output_path = "app/assets/javascripts/locale"
+
+  config.handlebars_function = "__"
+  config.javascript_function = "__"
+
+  config.jed_options = {
+    pretty: false
+  }
+end
+```
+
 
 ## Todo
 
