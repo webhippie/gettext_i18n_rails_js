@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.0.2) - 2015-03-30
+
+* Fixes exception when parsing empty js/coffee files
+* Avoid methods defined in rake task exposing globally
+* Added better configuration options
+
 ## [1.0.1](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.0.1) - 2015-02-24
 
 * Added missing javascripts to the gemspec
