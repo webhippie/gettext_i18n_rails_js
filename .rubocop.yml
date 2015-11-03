@@ -25,6 +25,9 @@ Style/ElseAlignment:
 Style/Next:
   Enabled: false
 
+Style/RegexpLiteral:
+  Enabled: false
+
 Metrics/MethodLength:
   CountComments: false
   Max: 30
