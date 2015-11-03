@@ -23,17 +23,10 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile", __FILE__)
-
-if File.exist? ENV["BUNDLE_GEMFILE"]
-  require "bundler"
-  Bundler.setup(:default)
-else
-  gem "rails", version: ">= 3.2.0"
-  gem "gettext", version: ">= 3.0.2"
-  gem "gettext_i18n_rails", version: ">= 0.7.1"
-  gem "po_to_json", version: ">= 0.1.0"
-end
+gem "rails", version: ">= 3.2.0"
+gem "gettext", version: ">= 3.0.2"
+gem "gettext_i18n_rails", version: ">= 0.7.1"
+gem "po_to_json", version: ">= 0.1.0"
 
 require "rails"
 require "gettext"
