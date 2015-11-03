@@ -87,9 +87,9 @@ module GettextI18nRailsJs
 
       def cleanup_value(value)
         value
-          .gsub("\n", "\n")
-          .gsub("\t", "\t")
-          .gsub("\0", "\0")
+          .tr("\n", "\n")
+          .tr("\t", "\t")
+          .tr("\0", "\0")
       end
 
       def separator_for(value)
