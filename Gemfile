@@ -32,6 +32,9 @@ group :development do
   gem "guard", require: false
   gem "guard-rubocop", require: false
   gem "guard-rspec", require: false
+
+  # Temporary fix for a ruby 2.2 requirement
+  gem "listen", "~> 3.0.7"
 end
 
 group :test do
