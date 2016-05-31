@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.4](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.0.4) - 2016-05-31
+
+* Support ES2015 template strings (@bradbarrow)
+
 ## [1.0.3](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.0.3) - 2015-11-03
 
 * Stop using bundler within the core lib (@domcleal)

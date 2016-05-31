@@ -27,7 +27,7 @@ module GettextI18nRailsJs
   class Version
     MAJOR = 1
     MINOR = 0
-    PATCH = 3
+    PATCH = 4
 
     PRE = nil
 
