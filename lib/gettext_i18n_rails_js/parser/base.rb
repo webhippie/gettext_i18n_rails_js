@@ -73,7 +73,7 @@ module GettextI18nRailsJs
       def parse(file, _msgids = [])
         collect_for(file) do |function, arguments, line|
           key = arguments.scan(
-            /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/
+            /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*`)/
           ).collect do |match|
             match.first[1..-2]
           end.join(separator_for(function))

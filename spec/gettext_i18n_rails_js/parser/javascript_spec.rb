@@ -123,6 +123,23 @@ describe GettextI18nRailsJs::Parser::Javascript do
       end
     end
 
+    it "finds messages with newlines/tabs (backticks)" do
+      content = <<-'EOF'
+        bla = __(`xxxx\n\tfoo`)
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["xxxx\\n\\tfoo", "#{path}:1"]
+            ]
+          )
+        )
+      end
+    end
+
+
     it "finds interpolated multi-line messages" do
       content = <<-'EOF'
         """ Parser should grab
