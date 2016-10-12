@@ -1,16 +1,14 @@
 language: ruby
 
 rvm:
+  - 2.2.0
   - 2.1.0
-  - 2.0.0
-  - 1.9.3
-  - jruby-head
 
 env:
   - RAILS_VERSION=3.2.21
   - RAILS_VERSION=4.0.13
-  - RAILS_VERSION=4.1.9
-  - RAILS_VERSION=4.2.0
+  - RAILS_VERSION=4.1.16
+  - RAILS_VERSION=4.2.7
 
 notifications:
   email:
