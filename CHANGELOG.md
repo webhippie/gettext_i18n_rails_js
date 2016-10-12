@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.2.0) - 2016-06-02
+
+* Support for JSX files (@artemv)
+* Fixed test suite, reduced test matrix (@tboerger)
+
 ## [1.1.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.1.0) - 2016-06-02
 
 * Replace hyphens with underscores in locale var from DOM (@filib)
