@@ -33,7 +33,7 @@ with older versions, but because of version bumps at `gettext_i18n_rails` and
 ## Installation
 
 ```ruby
-gem "gettext_i18n_rails_js", "~> 1.1.0"
+gem "gettext_i18n_rails_js", "~> 1.2.0"
 ```
 
 
