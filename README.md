@@ -16,23 +16,24 @@ client side javascript.
 
 ## Versions
 
-This gem is tested on the following versions:
+This gem is tested on the following versions, it's also possible that it works
+with older versions, but because of version bumps at `gettext_i18n_rails` and
+`fast_gettext` we have dropped the older versions from the testing matrix:
 
 * Ruby
-  * 1.9.3
-  * 2.0.0
   * 2.1.0
+  * 2.2.0
 * Rails
   * 3.2.21
   * 4.0.13
-  * 4.1.9
-  * 4.2.0
+  * 4.1.16
+  * 4.2.7
 
 
 ## Installation
 
 ```ruby
-gem "gettext_i18n_rails_js", "~> 1.0.0"
+gem "gettext_i18n_rails_js", "~> 1.1.0"
 ```
 
 
