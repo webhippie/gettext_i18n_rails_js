@@ -48,6 +48,7 @@ namespace :gettext do
       "slim",
       "rhtml",
       "js",
+      "jsx",
       "coffee",
       "handlebars",
       "hbs",
