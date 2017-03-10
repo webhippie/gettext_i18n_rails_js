@@ -76,7 +76,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
 
     it "finds namespaced messages" do
       content = <<-EOF
-        <div>{{__ "xxxx", "yyyy"}}</div>
+        <div>{{__ "xxxx" "yyyy"}}</div>
       EOF
 
       with_file content do |path|
@@ -279,7 +279,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         <div>
           {{gettext \"Hello {yourname}\"}}
           <span>
-            {{ngettext \"item\", \"items\", 44}}
+            {{ngettext \"item\" \"items\" 44}}
           </span>
         </div>
       EOF
