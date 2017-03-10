@@ -106,6 +106,22 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
+    it "finds single quote messages" do
+      content = <<-EOF
+      <div>{{__ 'blah'}}</div>
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["blah", "#{path}:1"]
+            ]
+          )
+        )
+      end
+    end
+
     # it "finds messages with newlines/tabs" do
     #   content = <<-EOF
     #     bla = __("xxxx\n\tfoo")

@@ -67,8 +67,8 @@ module GettextI18nRailsJs
             ([snN]?#{gettext_function})
             \s+
             (
-              ".*?"
-              (?:\s+".*?")?
+              (["'])(?:\\?+.)*?\4
+              (?:\s+(["'])(?:\\?+.)*?\5)?
             )
             .*?
           )
