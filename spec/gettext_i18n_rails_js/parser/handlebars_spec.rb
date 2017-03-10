@@ -234,6 +234,24 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
+    it "does not parse options" do
+      content = <<-EOF
+        <div>
+        {{__ "test with %{param}" param="something"}}
+        </div>
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["test with %{param}", "#{path}:1"]
+            ]
+          )
+        )
+      end
+    end
+
     # it "does not parse internal functions" do
     #   content = <<-EOF
     #     bla = n__("items (single)", "i (more)", item.count()) + __('foobar')
