@@ -60,14 +60,14 @@ describe GettextI18nRailsJs::Parser::Handlebars do
   describe "#parse" do
     it "finds plural messages" do
       content = <<-EOF
-        <div>{{n__ "xxxx" "yyyy\" "zzzz" some_count}}</div>
+        <div>{{n__ "xxxx" "yyyy" some_count}}</div>
       EOF
 
       with_file content do |path|
         expect(parser.parse(path, [])).to(
           eq(
             [
-              ["xxxx\000yyyy\000zzzz", "#{path}:1"]
+              ["xxxx\000yyyy", "#{path}:1"]
             ]
           )
         )
