@@ -62,15 +62,15 @@ module GettextI18nRailsJs
         # * Remaining arguments
         # * Function call closing parenthesis
         #
-
         /
           \B[{]{2}(
             ([snN]?#{gettext_function})
             \s+
             (
-              ".*?"
-              .*?
+              (["'])(?:\\?+.)*?\4
+              (?:\s+(["'])(?:\\?+.)*?\5)?
             )
+            .*?
           )
           [}]{2}
         /x

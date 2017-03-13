@@ -60,14 +60,14 @@ describe GettextI18nRailsJs::Parser::Handlebars do
   describe "#parse" do
     it "finds plural messages" do
       content = <<-EOF
-        <div>{{n__ "xxxx" "yyyy\" "zzzz" some_count}}</div>
+        <div>{{n__ "xxxx" "yyyy" some_count}}</div>
       EOF
 
       with_file content do |path|
         expect(parser.parse(path, [])).to(
           eq(
             [
-              ["xxxx\000yyyy\000zzzz", "#{path}:1"]
+              ["xxxx\000yyyy", "#{path}:1"]
             ]
           )
         )
@@ -76,7 +76,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
 
     it "finds namespaced messages" do
       content = <<-EOF
-        <div>{{__ "xxxx", "yyyy"}}</div>
+        <div>{{__ "xxxx" "yyyy"}}</div>
       EOF
 
       with_file content do |path|
@@ -93,6 +93,22 @@ describe GettextI18nRailsJs::Parser::Handlebars do
     it "finds simple messages" do
       content = <<-EOF
         <div>{{__ "blah"}}</div>
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["blah", "#{path}:1"]
+            ]
+          )
+        )
+      end
+    end
+
+    it "finds single quote messages" do
+      content = <<-EOF
+      <div>{{__ 'blah'}}</div>
       EOF
 
       with_file content do |path|
@@ -234,6 +250,24 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
+    it "does not parse options" do
+      content = <<-EOF
+        <div>
+        {{__ "test with %{param}" param="something"}}
+        </div>
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["test with %{param}", "#{path}:1"]
+            ]
+          )
+        )
+      end
+    end
+
     # it "does not parse internal functions" do
     #   content = <<-EOF
     #     bla = n__("items (single)", "i (more)", item.count()) + __('foobar')
@@ -279,7 +313,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         <div>
           {{gettext \"Hello {yourname}\"}}
           <span>
-            {{ngettext \"item\", \"items\", 44}}
+            {{ngettext \"item\" \"items\" 44}}
           </span>
         </div>
       EOF
