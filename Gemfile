@@ -39,7 +39,6 @@ end
 
 group :test do
   gem "codeclimate-test-reporter", require: false
-  gem "coveralls", require: false
   gem "rubocop", require: false
   gem "simplecov", require: false
 end

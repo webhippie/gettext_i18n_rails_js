@@ -24,26 +24,10 @@
 #
 
 require "simplecov"
+require "codeclimate-test-reporter" if ENV["CODECLIMATE_REPO_TOKEN"]
 
-if ENV["CODECLIMATE_REPO_TOKEN"]
-  require "coveralls"
-  require "codeclimate-test-reporter"
-
-  Coveralls.wear!
-  CodeClimate::TestReporter.start
-
-  SimpleCov.start do
-    add_filter "/spec"
-
-    formatter SimpleCov::Formatter::MultiFormatter[
-      SimpleCov::Formatter::HTMLFormatter,
-      CodeClimate::TestReporter::Formatter
-    ]
-  end
-else
-  SimpleCov.start do
-    add_filter "/spec"
-  end
+SimpleCov.start do
+  add_filter "/spec"
 end
 
 require "gettext_i18n_rails_js"
