@@ -34,3 +34,10 @@ Metrics/MethodLength:
 
 Metrics/ClassLength:
   Max: 300
+
+Metrics/BlockLength:
+  Exclude:
+    - "gettext_i18n_rails_js.gemspec"
+    - "**/*_spec.rb"
+  ExcludedMethods:
+    - "namespace"
