@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.3.0) - 2017-03-16
+
+* Fixed Handlebars translations with options (@mikezaby)
+* Fixed latest Rubocop offenses (@mikezaby)
+* Dropped failing coveralls, fixed codeclimate (@tboerger)
+
 ## [1.2.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.2.0) - 2016-06-02
 
 * Support for JSX files (@artemv)
