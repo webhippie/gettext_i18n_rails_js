@@ -33,9 +33,29 @@ with older versions, but because of version bumps at `gettext_i18n_rails` and
 ## Installation
 
 ```ruby
-gem "gettext_i18n_rails_js", "~> 1.2.0"
+gem "gettext_i18n_rails_js", "~> 1.2"
 ```
 
+## Versioning
+
+This library aims to adhere to [Semantic Versioning 2.0.0][semver].
+Violations of this scheme should be reported as bugs. Specifically,
+if a minor or patch version is released that breaks backward
+compatibility, a new version should be immediately released that
+restores compatibility. Breaking changes to the public API will
+only be introduced with new major versions.
+
+As a result of this policy, you can (and should) specify a
+dependency on this gem using the [Pessimistic Version Constraint][pvc] with two digits of precision.
+
+For example:
+
+```ruby
+spec.add_dependency 'gettext_i18n_rails_js', '~> 1.2'
+```
+
+[semver]: http://semver.org/
+[pvc]: http://guides.rubygems.org/patterns/#pessimistic-version-constraint
 
 ## Usage
 
