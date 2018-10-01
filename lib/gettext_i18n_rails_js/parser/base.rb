@@ -85,6 +85,11 @@ module GettextI18nRailsJs
 
       protected
 
+      def cleanup_multiline_line(value)
+        result = value.chomp
+        result.strip
+      end
+
       def cleanup_value(value)
         value
           .tr("\n", "\n")

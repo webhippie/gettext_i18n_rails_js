@@ -191,6 +191,25 @@ describe GettextI18nRailsJs::Parser::Javascript do
       end
     end
 
+    it "finds multi-line translations" do
+      content = <<-'EOF'
+        """ Parser should grab
+        __(`Hello, my name is <span class="name">John Doe</span>
+          and this is a very long string`)
+        """
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["Hello, my name is <span class=\"name\">John Doe</span> and this is a very long string", "#{path}:2"]
+            ]
+          )
+        )
+      end
+    end
+
     it "does not capture a false positive" do
       content = <<-'EOF'
         bla = should_not_be_registered__("xxxx", "yyyy")
