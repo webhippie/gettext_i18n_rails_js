@@ -150,12 +150,22 @@ describe GettextI18nRailsJs::Parser::Handlebars do
     #   end
     # end
 
-    # it "finds interpolated multi-line messages" do
-    #   content = <<-EOF
-    #     """ Parser should grab
-    #       #{ __("This") } __("known bug")
-    #     """
-    #   EOF
+    it "finds interpolated multi-line messages" do
+      content = <<-EOF
+        <div>{{{__ 'Hello, my name is <span class="name">John Doe</span>
+                    and this is a very long string'}}}</div>
+      EOF
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["Hello, my name is <span class=\"name\">John Doe</span>
+                    and this is a very long string", "#{path}:1"],
+            ]
+          )
+        )
+      end
+    end
 
     #   with_file content do |path|
     #     expect(parser.parse(path, [])).to(
