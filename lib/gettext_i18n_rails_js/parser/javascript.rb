@@ -45,12 +45,44 @@ module GettextI18nRailsJs
 
       def collect_for(value)
         ::File.open(value) do |f|
+          multiline = false
+          line_no = 0
+          buffer = ""
           f.each_line.each_with_index.collect do |line, idx|
-            line.scan(invoke_regex).collect do |function, arguments|
-              yield(function, arguments, idx + 1)
+            if multiline
+              buffer << cleanup_multiline_line(line)
+            else
+              buffer = line
+              line_no = idx + 1
+            end
+
+            if invoke_regex =~ buffer
+              multiline = false
+              buffer.scan(invoke_regex).collect do |function, arguments|
+                yield(function, arguments, line_no)
+              end
+            elsif invoke_open_regex =~ buffer
+              buffer << cleanup_multiline_line(buffer) unless multiline
+              buffer << " "
+              multiline = true
+              []
+            else
+              []
             end
           end.inject([], :+).compact
         end
+      end
+
+      def invoke_open_regex
+        #
+        # * Matches the function call grouping the method used (__, n__, N__)
+        # * A parenthesis to start the arguments to the function.
+        # * Used to identify translation start on a single line
+        #
+
+        /
+          (\b[snN]?#{gettext_function})\(
+        /x
       end
 
       def invoke_regex
@@ -70,7 +102,7 @@ module GettextI18nRailsJs
               #{arg_regex}
             )?
           \)
-        /x
+        /xm
       end
 
       def arg_regex
@@ -91,7 +123,7 @@ module GettextI18nRailsJs
             [a-zA-Z0-9_\.()]*?
           )
           \s*
-        /x
+        /xm
       end
     end
   end

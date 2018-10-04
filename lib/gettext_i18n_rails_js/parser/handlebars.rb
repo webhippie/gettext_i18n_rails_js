@@ -73,7 +73,7 @@ module GettextI18nRailsJs
             .*?
           )
           [}]{2}
-        /x
+        /xm
       end
     end
   end
