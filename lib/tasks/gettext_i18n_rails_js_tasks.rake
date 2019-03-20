@@ -49,6 +49,7 @@ namespace :gettext do
       "rhtml",
       "js",
       "jsx",
+      "vue",
       "coffee",
       "handlebars",
       "hbs",
