@@ -37,6 +37,14 @@ describe GettextI18nRailsJs::Parser::Javascript do
       expect(parser.target?("foo/bar/xxx.coffee")).to be_truthy
     end
 
+    it "targets .vue" do
+      expect(parser.target?("foo/bar/xxx.vue")).to be_truthy
+    end
+
+    it "targets .jsx" do
+      expect(parser.target?("foo/bar/xxx.jsx")).to be_truthy
+    end
+
     it "does not target cows" do
       expect(parser.target?("foo/bar/xxx.cows")).to be_falsey
     end
@@ -283,6 +291,51 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
   end
 
+  describe "parses vue files" do
+    let(:example) do
+      File.expand_path(
+        "../../../fixtures/example.vue",
+        __FILE__
+      )
+    end
+
+    let(:parsed_example) do
+      parser.parse(example, [])
+    end
+
+    it "parses all translations" do
+      expect(parsed_example).to(
+        eq(
+          [
+            ["Hello\\nBuddy", "#{example}:7"],
+            ["json", "#{example}:18"],
+            ["item\u0000items", "#{example}:19"]
+          ]
+        )
+      )
+    end
+
+    it "accepts changing the translate method" do
+      parser.gettext_function = "gettext"
+
+      content = <<-'EOF'
+        var string = \"this\" + gettext('json') + 'should be translated';
+      EOF
+
+      with_file content do |path|
+        expect(parser.parse(path, [])).to(
+          eq(
+            [
+              ["json", "#{path}:1"]
+            ]
+          )
+        )
+      end
+
+      parser.gettext_function = "__"
+    end
+  end
+
   describe "parses javascript files" do
     let(:example) do
       File.expand_path(
@@ -314,14 +367,16 @@ describe GettextI18nRailsJs::Parser::Javascript do
       parser.gettext_function = "gettext"
 
       content = <<-'EOF'
-        var string = \"this\" + gettext('json') + 'should be translated';
+        <template><div>{{ gettext('name') }}</div></template>
+        <script>var string = \"this\" + gettext('json') + 'should be translated';</script>
       EOF
 
       with_file content do |path|
         expect(parser.parse(path, [])).to(
           eq(
             [
-              ["json", "#{path}:1"]
+              ["name", "#{path}:1"],
+              ["json", "#{path}:2"]
             ]
           )
         )
