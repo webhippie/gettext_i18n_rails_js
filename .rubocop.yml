@@ -1,11 +1,16 @@
+inherit_from: .rubocop_todo.yml
+
+Layout/ElseAlignment:
+  Enabled: false
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
-
-Style/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
 
 Style/Documentation:
   Enabled: false
@@ -19,9 +24,6 @@ Style/WordArray:
 Style/PerlBackrefs:
   Enabled: false
 
-Style/ElseAlignment:
-  Enabled: false
-
 Style/Next:
   Enabled: false
 
@@ -32,6 +34,9 @@ Metrics/MethodLength:
   CountComments: false
   Max: 30
 
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
 Metrics/ClassLength:
   Max: 300
 
@@ -40,4 +45,4 @@ Metrics/BlockLength:
     - "gettext_i18n_rails_js.gemspec"
     - "**/*_spec.rb"
   ExcludedMethods:
-    - "namespace"
+    - namespace
