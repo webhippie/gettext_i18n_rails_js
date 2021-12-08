@@ -8,7 +8,22 @@ name: testing
       - master
 
 jobs:
-  testing:
+  lint:
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.1
+          bundler: 1.17
+          bundler-cache: true
+
+      - name: Run rubocop
+        run: bundle exec rubocop
+
+  spec:
     runs-on: ubuntu-20.04
 
     strategy:
