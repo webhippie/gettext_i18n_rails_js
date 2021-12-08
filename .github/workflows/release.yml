@@ -1,0 +1,22 @@
+---
+name: release
+
+"on":
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Release gem
+        uses: dawidd6/action-publish-gem@v1
+        with:
+          api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+
+...
