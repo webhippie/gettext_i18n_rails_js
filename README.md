@@ -1,10 +1,9 @@
-# GettextI18nRailsJs
+# gettext_i18n_rails_js
 
-[![Gem Version](http://img.shields.io/gem/v/gettext_i18n_rails_js.svg)](https://rubygems.org/gems/gettext_i18n_rails_js)
-[![Build Status](https://secure.travis-ci.org/webhippie/gettext_i18n_rails_js.svg)](https://travis-ci.org/webhippie/gettext_i18n_rails_js)
-[![Code Climate](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js.svg)](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js)
-[![Test Coverage](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js/badges/coverage.svg)](https://codeclimate.com/github/webhippie/gettext_i18n_rails_js)
-[![Dependency Status](https://gemnasium.com/webhippie/gettext_i18n_rails_js.svg)](https://gemnasium.com/webhippie/gettext_i18n_rails_js)
+[![Test Status](https://github.com/webhippie/gettext_i18n_rails_js/actions/workflows/testing.yml/badge.svg)](https://github.com/webhippie/gettext_i18n_rails_js/actions/workflows/testing.yaml)
+[![Join the Matrix chat at https://matrix.to/#/#webhippie:matrix.org](https://img.shields.io/badge/matrix-%23webhippie%3Amatrix.org-7bc9a4.svg)](https://matrix.to/#/#webhippie:matrix.org)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/51f241a0f0d7490cae0bdc04387f9d13)](https://www.codacy.com/gh/webhippie/gettext_i18n_rails_js/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=webhippie/gettext_i18n_rails_js&amp;utm_campaign=Badge_Grade)
+[![Gem Version](https://badge.fury.io/rb/gettext_i18n_rails_js.svg)](https://badge.fury.io/rb/gettext_i18n_rails_js)
 
 Extends [gettext_i18n_rails](https://github.com/grosser/gettext_i18n_rails),
 making your .PO files available to client side javascript as JSON. It will find
@@ -13,22 +12,10 @@ will create JSON versions of your .PO files so you can serve them with the rest
 of your assets, thus letting you access all your translations offline from
 client side javascript.
 
-
 ## Versions
 
-This gem is tested on the following versions, it's also possible that it works
-with older versions, but because of version bumps at `gettext_i18n_rails` and
-`fast_gettext` we have dropped the older versions from the testing matrix:
-
-* Ruby
-  * 2.1.0
-  * 2.2.0
-* Rails
-  * 3.2.21
-  * 4.0.13
-  * 4.1.16
-  * 4.2.7
-
+For a list of the tested and supported Ruby and Rails versions please take a
+look at the [wokflow](https://github.com/webhippie/gettext_i18n_rails_js/blob/master/.github/workflows/testing.yml).
 
 ## Installation
 
@@ -38,28 +25,25 @@ gem "gettext_i18n_rails_js", "~> 1.2"
 
 ## Versioning
 
-This library aims to adhere to [Semantic Versioning 2.0.0][semver].
-Violations of this scheme should be reported as bugs. Specifically,
-if a minor or patch version is released that breaks backward
-compatibility, a new version should be immediately released that
-restores compatibility. Breaking changes to the public API will
-only be introduced with new major versions.
+This library aims to adhere to [Semantic Versioning 2.0.0][http://semver.org/].
+Violations of this scheme should be reported as bugs. Specifically, if a minor
+or patch version is released that breaks backward compatibility, a new version
+should be immediately released that restores compatibility. Breaking changes to
+the public API will only be introduced with new major versions.
 
-As a result of this policy, you can (and should) specify a
-dependency on this gem using the [Pessimistic Version Constraint][pvc] with two digits of precision.
+As a result of this policy, you can (and should) specify a dependency on this
+gem using the [Pessimistic Version Constraint][http://guides.rubygems.org/patterns/#pessimistic-version-constraint]
+with two digits of precision.
 
 For example:
 
 ```ruby
-spec.add_dependency 'gettext_i18n_rails_js', '~> 1.2'
+spec.add_dependency "gettext_i18n_rails_js", "~> 1.2"
 ```
-
-[semver]: http://semver.org/
-[pvc]: http://guides.rubygems.org/patterns/#pessimistic-version-constraint
 
 ## Usage
 
-set up you rails application with gettext support as usual, afterwards just
+Set up you rails application with gettext support as usual, afterwards just
 execute the following rake task to export your translations to JSON:
 
 ```bash
@@ -119,17 +103,14 @@ GettextI18nRailsJs.config do |config|
 end
 ```
 
-
 ## Todo
 
 * More deep testing against multiple Rails versions
 * Extend the current test suite, especially handlebars
 
-
 ## Contributing
 
 Fork -> Patch -> Spec -> Push -> Pull Request
-
 
 ## Authors
 
@@ -137,11 +118,9 @@ Fork -> Patch -> Spec -> Push -> Pull Request
 * [Nubis](https://github.com/nubis)
 * [Other contributors](https://github.com/webhippie/gettext_i18n_rails_js/graphs/contributors)
 
-
 ## License
 
 MIT
-
 
 ## Copyright
 
