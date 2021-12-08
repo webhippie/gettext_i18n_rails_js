@@ -5,7 +5,7 @@ name: rubocop
   pull_request:
 
 jobs:
-  release:
+  rubocop:
     runs-on: ubuntu-20.04
 
     steps:
