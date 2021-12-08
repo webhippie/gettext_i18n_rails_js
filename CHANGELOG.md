@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.1](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - 2021-12-08
+
+* Fixed multiline translation strings (@delxen)
+* Switched to Codacy for coverage reports (@tboerger)
+* Switched to GitHub actions for CI (@ezr-ondrej)
+
 ## [1.3.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.3.0) - 2017-03-16
 
 * Fixed Handlebars translations with options (@mikezaby)
