@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -294,8 +295,8 @@ describe GettextI18nRailsJs::Parser::Javascript do
   describe "parses vue files" do
     let(:example) do
       File.expand_path(
-        "../../../fixtures/example.vue",
-        __FILE__
+        "../../fixtures/example.vue",
+        __dir__
       )
     end
 
@@ -339,8 +340,8 @@ describe GettextI18nRailsJs::Parser::Javascript do
   describe "parses javascript files" do
     let(:example) do
       File.expand_path(
-        "../../../fixtures/example.js",
-        __FILE__
+        "../../fixtures/example.js",
+        __dir__
       )
     end
 
@@ -389,8 +390,8 @@ describe GettextI18nRailsJs::Parser::Javascript do
   describe "parses coffee files" do
     let(:example) do
       File.expand_path(
-        "../../../fixtures/example.coffee",
-        __FILE__
+        "../../fixtures/example.coffee",
+        __dir__
       )
     end
 

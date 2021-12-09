@@ -15,7 +15,7 @@ client side javascript.
 ## Versions
 
 For a list of the tested and supported Ruby and Rails versions please take a
-look at the [wokflow](https://github.com/webhippie/gettext_i18n_rails_js/blob/master/.github/workflows/testing.yml).
+look at the [wokflow][workflow].
 
 ## Installation
 
@@ -25,15 +25,14 @@ gem "gettext_i18n_rails_js", "~> 1.2"
 
 ## Versioning
 
-This library aims to adhere to [Semantic Versioning 2.0.0][http://semver.org/].
-Violations of this scheme should be reported as bugs. Specifically, if a minor
-or patch version is released that breaks backward compatibility, a new version
-should be immediately released that restores compatibility. Breaking changes to
-the public API will only be introduced with new major versions.
+This library aims to adhere to [Semantic Versioning 2.0.0][semver]. Violations
+of this scheme should be reported as bugs. Specifically, if a minor or patch
+version is released that breaks backward compatibility, a new version should be
+immediately released that restores compatibility. Breaking changes to the public
+API will only be introduced with new major versions.
 
 As a result of this policy, you can (and should) specify a dependency on this
-gem using the [Pessimistic Version Constraint][http://guides.rubygems.org/patterns/#pessimistic-version-constraint]
-with two digits of precision.
+gem using the [Pessimistic Version Constraint][pvc] with two digits of precision.
 
 For example:
 
@@ -105,8 +104,8 @@ end
 
 ## Todo
 
-* More deep testing against multiple Rails versions
-* Extend the current test suite, especially handlebars
+*   More deep testing against multiple Rails versions
+*   Extend the current test suite, especially handlebars
 
 ## Contributing
 
@@ -114,9 +113,9 @@ Fork -> Patch -> Spec -> Push -> Pull Request
 
 ## Authors
 
-* [Thomas Boerger](https://github.com/tboerger)
-* [Nubis](https://github.com/nubis)
-* [Other contributors](https://github.com/webhippie/gettext_i18n_rails_js/graphs/contributors)
+*   [Thomas Boerger](https://github.com/tboerger)
+*   [Nubis](https://github.com/nubis)
+*   [Other contributors](https://github.com/webhippie/gettext_i18n_rails_js/graphs/contributors)
 
 ## License
 
@@ -128,3 +127,7 @@ MIT
 Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 Copyright (c) 2015 Webhippie <http://www.webhippie.de>
 ```
+
+[workflow]: https://github.com/webhippie/gettext_i18n_rails_js/blob/master/.github/workflows/testing.yml
+[semver]: http://semver.org
+[pvc]: http://guides.rubygems.org/patterns/#pessimistic-version-constraint

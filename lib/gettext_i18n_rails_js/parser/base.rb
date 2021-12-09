@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -36,7 +37,7 @@ module GettextI18nRailsJs
       # conflicts with other javascript libraries. You only need to define
       # the base function name to replace "_" and all the other variants
       # (s_, n_, N_) will be deduced automatically.
-      attr_accessor :gettext_function
+      attr_writer :gettext_function
 
       def gettext_function
         @gettext_function ||= "__"
@@ -79,6 +80,7 @@ module GettextI18nRailsJs
           end.join(separator_for(function))
 
           next if key == ""
+
           results_for(key, file, line)
         end
       end

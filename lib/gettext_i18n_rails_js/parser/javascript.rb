@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -121,7 +122,7 @@ module GettextI18nRailsJs
             '(?:[^'\\]|\\.)*?'|
             "(?:[^"\\]|\\.)*?"|
             `(?:[^`\\]|\\.)*?`|
-            [a-zA-Z0-9_\.()]*?
+            [a-zA-Z0-9_.()]*?
           )
           \s*
         /xm
