@@ -52,10 +52,12 @@ Metrics/PerceivedComplexity:
   Max: 10
 
 Metrics/BlockLength:
+  Max: 35
   Exclude:
-    - "gettext_i18n_rails_js.gemspec"
     - "**/*_spec.rb"
-  IgnoredMethods:
-    - namespace
+
+Metrics/LineLength:
+  Exclude:
+    - "**/*_spec.rb"
 
 ...

@@ -9,6 +9,8 @@ name: testing
 
 jobs:
   lint:
+    runs-on: ubuntu-20.04
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
