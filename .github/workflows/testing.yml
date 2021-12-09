@@ -8,7 +8,7 @@ name: testing
       - master
 
 jobs:
-  lint:
+  rubocop:
     runs-on: ubuntu-20.04
 
     steps:
@@ -27,6 +27,7 @@ jobs:
 
   spec:
     runs-on: ubuntu-20.04
+    needs: rubocop
 
     strategy:
       fail-fast: false
