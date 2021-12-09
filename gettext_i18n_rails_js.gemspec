@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -23,7 +24,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path("lib", __dir__)
 require "gettext_i18n_rails_js/version"
 
 Gem::Specification.new do |s|
@@ -62,11 +63,11 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake"
-  s.add_development_dependency "yard"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "yard"
 
-  s.add_dependency "rails", ">= 3.2.0"
   s.add_dependency "gettext", ">= 3.0.2"
   s.add_dependency "gettext_i18n_rails", ">= 0.7.1"
   s.add_dependency "po_to_json", ">= 1.0.0"
+  s.add_dependency "rails", ">= 3.2.0"
 end

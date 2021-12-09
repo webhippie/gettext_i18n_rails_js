@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -150,6 +151,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
     #   end
     # end
 
+    # rubocop:disable Style/TrailingCommaInArrayLiteral
     it "finds interpolated multi-line messages" do
       content = <<-EOF
         <div>{{{__ 'Hello, my name is <span class="name">John Doe</span>
@@ -166,6 +168,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         )
       end
     end
+    # rubocop:enable Style/TrailingCommaInArrayLiteral
 
     #   with_file content do |path|
     #     expect(parser.parse(path, [])).to(
@@ -260,6 +263,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
+    # rubocop:disable Style/FormatStringToken
     it "does not parse options" do
       content = <<-EOF
         <div>
@@ -277,6 +281,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         )
       end
     end
+    # rubocop:enable Style/FormatStringToken
 
     # it "does not parse internal functions" do
     #   content = <<-EOF
@@ -295,8 +300,8 @@ describe GettextI18nRailsJs::Parser::Handlebars do
   describe "parses handlebars files" do
     let(:example) do
       File.expand_path(
-        "../../../fixtures/example.handlebars",
-        __FILE__
+        "../../fixtures/example.handlebars",
+        __dir__
       )
     end
 

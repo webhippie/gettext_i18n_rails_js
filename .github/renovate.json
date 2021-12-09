@@ -1,0 +1,11 @@
+{
+    "extends": [
+        "config:base",
+        ":semanticCommits",
+        ":semanticCommitType(deps)",
+        ":automergePatch"
+    ],
+    "labels": [
+        "renovate"
+    ]
+}

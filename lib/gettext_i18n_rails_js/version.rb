@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -27,7 +28,7 @@ module GettextI18nRailsJs
   class Version
     MAJOR = 1
     MINOR = 3
-    PATCH = 0
+    PATCH = 1
 
     PRE = nil
 

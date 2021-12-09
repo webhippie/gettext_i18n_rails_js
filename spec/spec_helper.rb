@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -23,17 +24,19 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require "simplecov"
-require "codeclimate-test-reporter" if ENV["CODECLIMATE_REPO_TOKEN"]
-
-SimpleCov.start do
-  add_filter "/spec"
+if ENV.key? "CODACY_PROJECT_TOKEN"
+  begin
+    require "codacy-coverage"
+    Codacy::Reporter.start
+  rescue StandardError
+    puts "Failed to load codacy-coverage gem"
+  end
 end
 
 require "gettext_i18n_rails_js"
 require "rspec"
 
-Dir[File.expand_path("../support/**/*.rb", __FILE__)].each do |file|
+Dir[File.expand_path("support/**/*.rb", __dir__)].sort.each do |file|
   require file
 end
 

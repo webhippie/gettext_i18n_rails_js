@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+# frozen_string_literal: true
+
 #
 # Copyright (c) 2012-2015 Dropmysite.com <https://dropmyemail.com>
 # Copyright (c) 2015 Webhippie <http://www.webhippie.de>
@@ -25,10 +26,10 @@
 
 module GettextI18nRailsJs
   class Config
-    attr_accessor :output_path
-    attr_accessor :handlebars_function
-    attr_accessor :javascript_function
-    attr_accessor :jed_options
+    attr_accessor :output_path,
+                  :handlebars_function,
+                  :javascript_function,
+                  :jed_options
 
     def initialize(&block)
       @output_path = defaults[:output_path]

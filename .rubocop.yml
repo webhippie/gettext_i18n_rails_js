@@ -1,4 +1,9 @@
-inherit_from: .rubocop_todo.yml
+---
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
 
 Layout/ElseAlignment:
   Enabled: false
@@ -30,19 +35,29 @@ Style/Next:
 Style/RegexpLiteral:
   Enabled: false
 
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
 Metrics/MethodLength:
   CountComments: false
   Max: 30
 
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
 Metrics/ClassLength:
   Max: 300
 
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
 Metrics/BlockLength:
+  Max: 35
   Exclude:
-    - "gettext_i18n_rails_js.gemspec"
     - "**/*_spec.rb"
-  ExcludedMethods:
-    - namespace
+
+Metrics/LineLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+...
