@@ -185,7 +185,8 @@ describe GettextI18nRailsJs::Parser::Javascript do
 
     it "finds strings that use escaped strings" do
       content = <<-'EOF'
-        __("hello \"dude\"") + __('how is it \'going\' ')
+        __("hello \"dude\"") + __('how is it \'going\' ') +
+        __('stellar "dude"') + __("it's 'going' good")
       EOF
 
       with_file content do |path|
@@ -193,7 +194,9 @@ describe GettextI18nRailsJs::Parser::Javascript do
           eq(
             [
               ["hello \\\"dude\\\"", "#{path}:1"],
-              ["how is it \\'going\\' ", "#{path}:1"]
+              ["how is it 'going' ", "#{path}:1"],
+              ["stellar \\\"dude\\\"", "#{path}:2"],
+              ["it's 'going' good", "#{path}:2"]
             ]
           )
         )
@@ -212,7 +215,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
         expect(parser.parse(path, [])).to(
           eq(
             [
-              ["Hello, my name is <span class=\"name\">John Doe</span> and this is a very long string", "#{path}:2"]
+              ["Hello, my name is <span class=\\\"name\\\">John Doe</span> and this is a very long string", "#{path}:2"]
             ]
           )
         )

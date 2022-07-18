@@ -71,12 +71,17 @@ module GettextI18nRailsJs
       # [0]: __('foo', 'foos', 3)
       # [1]: __
       # [2]: 'foo', 'foos', 3
+      #
+      # The PO file outputs to a "" string.
+      # single quotes are unescped (if they are escaped)
+      # double quotes are escaped (if they are not already escaped)
       def parse(file, _msgids = [])
         collect_for(file) do |function, arguments, line|
           key = arguments.scan(
             /('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*`)/
           ).collect do |match|
-            match.first[1..-2]
+            contents = match.first[1..-2]
+            contents.gsub(/\\'/, "'").gsub(/(?<=[^\\])"/, "\\\"")
           end.join(separator_for(function))
 
           next if key == ""
