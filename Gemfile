@@ -35,7 +35,7 @@ group :development do
   gem "guard-rubocop", require: false
 
   # Temporary fix for a ruby 2.2 requirement
-  gem "listen", "~> 3.0.7"
+  gem "listen", "~> 3.8.0"
 end
 
 group :test do
