@@ -45,12 +45,12 @@ module GettextI18nRailsJs
       path = output_path.join(lang)
       path.mkpath
 
-      path.join("app.js").open("w") do |f|
+      path.join("#{domain}.js").open("w") do |f|
         f.rewind
         f.write yield
       end
 
-      puts "Created app.js in #{path}"
+      puts "Created #{domain}.js in #{path}"
     end
 
     def lang_for(file)
@@ -103,9 +103,17 @@ module GettextI18nRailsJs
     end
 
     def output_path
-      ::Rails.root.join(
+      engine_root.join(
         GettextI18nRailsJs.config.output_path
       )
+    end
+
+    def engine_root
+      GettextI18nRailsJs.config.rails_engine.root
+    end
+
+    def domain
+      GettextI18nRailsJs.config.domain
     end
 
     def print_footer
