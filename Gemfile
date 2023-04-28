@@ -34,12 +34,10 @@ group :development do
   gem "guard-rspec", require: false
   gem "guard-rubocop", require: false
 
-  # Temporary fix for a ruby 2.2 requirement
   gem "listen", "~> 3.0.7"
 end
 
 group :test do
-  gem "codeclimate-test-reporter", require: false
   gem "rubocop", require: false
   gem "simplecov", require: false
 end

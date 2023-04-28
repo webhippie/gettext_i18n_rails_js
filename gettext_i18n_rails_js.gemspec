@@ -30,7 +30,6 @@ require "gettext_i18n_rails_js/version"
 Gem::Specification.new do |s|
   s.name = "gettext_i18n_rails_js"
   s.version = GettextI18nRailsJs::Version
-  s.date = Time.now.strftime("%F")
 
   s.authors = ["Thomas Boerger", "Nubis"]
   s.email = ["thomas@webhippie.de", "nubis@woobiz.com.ar"]

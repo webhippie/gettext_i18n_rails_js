@@ -1,9 +1,6 @@
 # gettext_i18n_rails_js
 
-[![Test Status](https://github.com/webhippie/gettext_i18n_rails_js/actions/workflows/testing.yml/badge.svg)](https://github.com/webhippie/gettext_i18n_rails_js/actions/workflows/testing.yaml)
-[![Join the Matrix chat at https://matrix.to/#/#webhippie:matrix.org](https://img.shields.io/badge/matrix-%23webhippie%3Amatrix.org-7bc9a4.svg)](https://matrix.to/#/#webhippie:matrix.org)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/51f241a0f0d7490cae0bdc04387f9d13)](https://www.codacy.com/gh/webhippie/gettext_i18n_rails_js/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=webhippie/gettext_i18n_rails_js&amp;utm_campaign=Badge_Grade)
-[![Gem Version](https://badge.fury.io/rb/gettext_i18n_rails_js.svg)](https://badge.fury.io/rb/gettext_i18n_rails_js)
+[![Test Status](https://github.com/webhippie/gettext_i18n_rails_js/actions/workflows/testing.yml/badge.svg)](https://github.com/webhippie/gettext_i18n_rails_js/actions/workflows/testing.yaml) [![Join the Matrix chat at https://matrix.to/#/#webhippie:matrix.org](https://img.shields.io/badge/matrix-%23webhippie%3Amatrix.org-7bc9a4.svg)](https://matrix.to/#/#webhippie:matrix.org) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/51f241a0f0d7490cae0bdc04387f9d13)](https://app.codacy.com/gh/webhippie/gettext_i18n_rails_js/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Gem Version](https://badge.fury.io/rb/gettext_i18n_rails_js.svg)](https://badge.fury.io/rb/gettext_i18n_rails_js)
 
 Extends [gettext_i18n_rails](https://github.com/grosser/gettext_i18n_rails),
 making your .PO files available to client side javascript as JSON. It will find
@@ -101,11 +98,6 @@ GettextI18nRailsJs.config do |config|
   }
 end
 ```
-
-## Todo
-
-*   More deep testing against multiple Rails versions
-*   Extend the current test suite, especially handlebars
 
 ## Contributing
 

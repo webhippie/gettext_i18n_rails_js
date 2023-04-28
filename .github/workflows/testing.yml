@@ -46,7 +46,6 @@ jobs:
           - 6.1
           - 7.0
         exclude:
-          # excludes new rails on old ruby
           - rails: 5.2
             ruby: 2.1
           - rails: 6.1
@@ -55,7 +54,6 @@ jobs:
             ruby: 2.1
           - rails: 7.0
             ruby: 2.5
-          # excludes old rails on new ruby
           - rails: 3.2
             ruby: 2.7
           - rails: 4.2

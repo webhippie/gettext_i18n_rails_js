@@ -263,7 +263,6 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
-    # rubocop:disable Style/FormatStringToken
     it "does not parse options" do
       content = <<-EOF
         <div>
@@ -281,7 +280,6 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         )
       end
     end
-    # rubocop:enable Style/FormatStringToken
 
     # it "does not parse internal functions" do
     #   content = <<-EOF
