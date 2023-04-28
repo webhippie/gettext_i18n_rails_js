@@ -29,13 +29,17 @@ module GettextI18nRailsJs
     attr_accessor :output_path,
                   :handlebars_function,
                   :javascript_function,
-                  :jed_options
+                  :jed_options,
+                  :rails_engine,
+                  :domain
 
     def initialize(&block)
       @output_path = defaults[:output_path]
       @handlebars_function = defaults[:handlebars_function]
       @javascript_function = defaults[:javascript_function]
       @jed_options = defaults[:jed_options].symbolize_keys
+      @rails_engine = defaults[:rails_engine]
+      @domain = defaults[:domain]
 
       instance_eval(&block) if block_given?
     end
@@ -59,7 +63,9 @@ module GettextI18nRailsJs
         javascript_function: "__",
         jed_options: {
           pretty: false
-        }
+        },
+        rails_engine: ::Rails,
+        domain: "app"
       }
 
       if file.exist?

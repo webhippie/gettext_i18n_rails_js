@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.3.1](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - 2021-12-08
+## [1.4.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - unreleased
+
+*   Added support for doing conversion for different domains and rails engines (@adamruzicka)
+
+## [1.3.1](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.3.1) - 2021-12-08
 
 *   Fixed multiline translation strings (@delxen)
 *   Switched to Codacy for coverage reports (@tboerger)
