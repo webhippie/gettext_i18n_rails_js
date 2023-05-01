@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.4.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - unreleased
+## [1.4.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - 2024-05-01
 
 *   Added support for doing conversion for different domains and rails engines (@adamruzicka)
 
