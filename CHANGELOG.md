@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.4.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - 2024-05-01
+## [2.0.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v2.0.0) - 2023-07-20
+
+*   Upgrade to latest po_to_json which fixes double quotes within msgid (@tboerger)
+
+## [1.4.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v1.4.0) - 2023-05-01
 
 *   Added support for doing conversion for different domains and rails engines (@adamruzicka)
 
