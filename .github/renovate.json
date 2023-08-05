@@ -1,11 +1,6 @@
 {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "config:base",
-        ":semanticCommits",
-        ":semanticCommitType(deps)",
-        ":automergePatch"
-    ],
-    "labels": [
-        "renovate"
+        "github>webhippie/.github//renovate/preset"
     ]
 }
