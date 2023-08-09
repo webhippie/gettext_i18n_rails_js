@@ -67,6 +67,10 @@ jobs:
             ruby: 3.1
           - rails: 4.2
             ruby: 3.1
+          - rails: 3.2
+            ruby: 3.2
+          - rails: 4.2
+            ruby: 3.2
 
     steps:
       - name: Checkout source
