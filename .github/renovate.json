@@ -2,5 +2,16 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
         "github>webhippie/.github//renovate/preset"
+    ],
+    "packageRules": [
+        {
+            "matchDatasources": [
+                "rubygems"
+            ],
+            "matchPackageNames": [
+                "listen"
+            ],
+            "enabled": false
+        }
     ]
 }
