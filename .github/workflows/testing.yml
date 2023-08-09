@@ -9,7 +9,7 @@ name: testing
 
 jobs:
   rubocop:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
@@ -26,7 +26,7 @@ jobs:
         run: bundle exec rubocop
 
   spec:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs: rubocop
 
     strategy:
