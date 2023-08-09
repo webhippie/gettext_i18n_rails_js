@@ -34,7 +34,7 @@ group :development do
   gem "guard-rspec", require: false
   gem "guard-rubocop", require: false
 
-  gem "listen", "~> 3.0.7"
+  gem "listen", "~> 3.8.0"
 end
 
 group :test do
