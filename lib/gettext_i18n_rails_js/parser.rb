@@ -24,11 +24,10 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-require_relative "parser/base"
-require_relative "parser/javascript"
-require_relative "parser/handlebars"
-
 module GettextI18nRailsJs
   module Parser
+    autoload(:Base, "gettext_i18n_rails_js/parser/base")
+    autoload(:Javascript, "gettext_i18n_rails_js/parser/javascript")
+    autoload(:Handlebars, "gettext_i18n_rails_js/parser/handlebars")
   end
 end
