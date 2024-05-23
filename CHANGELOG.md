@@ -2,7 +2,7 @@
 
 ## [2.1.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v2.1.0) - 2024-05-23
 
-*   Autoload parsers only on first usage to reduce memory consumtion (@jrafanie)
+*   Autoload parsers only on first usage to reduce memory consumption (@jrafanie)
 
 ## [2.0.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v2.0.0) - 2023-07-20
 
