@@ -1,3 +1,6 @@
+.direnv
+.devenv
+
 .DS_Store
 
 /.idea
