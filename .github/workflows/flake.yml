@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout source
         id: source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
 
