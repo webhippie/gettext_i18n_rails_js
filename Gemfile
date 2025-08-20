@@ -34,7 +34,11 @@ group :development do
   gem "guard-rspec", require: false
   gem "guard-rubocop", require: false
 
+  gem "bundler"
   gem "listen", ">= 3.0.7"
+  gem "rake"
+  gem "rspec"
+  gem "yard"
 end
 
 group :test do

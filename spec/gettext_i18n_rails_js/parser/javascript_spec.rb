@@ -53,7 +53,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
 
   describe "#parse" do
     it "finds plural messages" do
-      content = <<-'EOF'
+      content = <<-EOF
         bla = n__("xxxx", "yyyy", "zzzz", some_count)
       EOF
 
@@ -69,7 +69,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "finds namespaced messages" do
-      content = <<-'EOF'
+      content = <<-EOF
         bla = __("xxxx", "yyyy")
       EOF
 
@@ -85,7 +85,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "finds simple messages" do
-      content = <<-'EOF'
+      content = <<-EOF
         foo = __("xxxx")
       EOF
 
@@ -168,7 +168,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "finds strings that use some templating" do
-      content = <<-'EOF'
+      content = <<-EOF
         __("hello {yourname}")
       EOF
 
@@ -204,7 +204,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "finds multi-line translations" do
-      content = <<-'EOF'
+      content = <<-EOF
         """ Parser should grab
         __(`Hello, my name is <span class="name">John Doe</span>
           and this is a very long string`)
@@ -223,7 +223,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "does not capture a false positive" do
-      content = <<-'EOF'
+      content = <<-EOF
         bla = should_not_be_registered__("xxxx", "yyyy")
       EOF
 
@@ -237,7 +237,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "does not find nonstring messages" do
-      content = <<-'EOF'
+      content = <<-EOF
         bla = __(bar)
       EOF
 
@@ -251,7 +251,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "does not parse internal parentheses" do
-      content = <<-'EOF'
+      content = <<-EOF
         bla = __("some text (great) and parentheses()") + __('foobar')
       EOF
 
@@ -268,7 +268,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
     end
 
     it "does not parse internal functions" do
-      content = <<-'EOF'
+      content = <<-EOF
         bla = n__("items (single)", "i (more)", item.count()) + __('foobar')
       EOF
 

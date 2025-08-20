@@ -324,9 +324,9 @@ describe GettextI18nRailsJs::Parser::Handlebars do
 
       content = <<-EOF
         <div>
-          {{gettext \"Hello {yourname}\"}}
+          {{gettext "Hello {yourname}"}}
           <span>
-            {{ngettext \"item\" \"items\" 44}}
+            {{ngettext "item" "items" 44}}
           </span>
         </div>
       EOF
