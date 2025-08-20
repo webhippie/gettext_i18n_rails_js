@@ -8,6 +8,9 @@ name: testing
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   rubocop:
     runs-on: ubuntu-latest

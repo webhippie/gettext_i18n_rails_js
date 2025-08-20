@@ -7,6 +7,9 @@ name: release
     tags:
       - v*
 
+permissions:
+  contents: read
+
 jobs:
   release:
     runs-on: ubuntu-latest
