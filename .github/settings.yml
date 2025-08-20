@@ -13,27 +13,81 @@ repository:
 
   default_branch: master
 
+  allow_merge_commit: false
   allow_squash_merge: true
-  allow_merge_commit: true
   allow_rebase_merge: true
 
-branches:
-  - name: master
-    protection:
-      required_status_checks:
-        strict: true
-        contexts:
-          - rubocop
-      enforce_admins: false
-      restrictions:
-        apps:
-          - webhippie
-          - renovate
-        users: []
-        teams:
-          - admins
-          - bots
-          - members
+rulesets:
+  - name: prevent destruction
+    target: branch
+    enforcement: active
+    conditions:
+      ref_name:
+        include:
+          - "~DEFAULT_BRANCH"
+        exclude: []
+    rules:
+      - type: required_linear_history
+      - type: deletion
+      - type: non_fast_forward
+
+  - name: check verification
+    target: branch
+    enforcement: active
+    conditions:
+      ref_name:
+        include:
+          - "~DEFAULT_BRANCH"
+        exclude: []
+    rules:
+      - type: required_status_checks
+        parameters:
+          strict_required_status_checks_policy: true
+          required_status_checks:
+            - context: Semantic PR
+              integration_id: 198092
+            - context: rubocop
+              integration_id: 15368
+    bypass_actors:
+      - actor_id: 1
+        actor_type: OrganizationAdmin
+        bypass_mode: always
+      - actor_id: 951695 # app
+        actor_type: Integration
+        bypass_mode: always
+      - actor_id: 6359533 # bots
+        actor_type: Team
+        bypass_mode: always
+
+  - name: require reviewing
+    target: branch
+    enforcement: active
+    conditions:
+      ref_name:
+        include:
+          - "~DEFAULT_BRANCH"
+        exclude: []
+    rules:
+      - type: pull_request
+        parameters:
+          allowed_merge_methods:
+            - squash
+            - rebase
+          dismiss_stale_reviews_on_push: false
+          require_code_owner_review: false
+          require_last_push_approval: false
+          required_approving_review_count: 0
+          required_review_thread_resolution: false
+    bypass_actors:
+      - actor_id: 1
+        actor_type: OrganizationAdmin
+        bypass_mode: always
+      - actor_id: 951695 # app
+        actor_type: Integration
+        bypass_mode: always
+      - actor_id: 6359533 # bots
+        actor_type: Team
+        bypass_mode: always
 
 teams:
   - name: admins
