@@ -16,21 +16,17 @@ jobs:
 
     steps:
       - name: Checkout source
-        id: source
         uses: actions/checkout@v5
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
 
       - name: Install nix
-        id: nix
         uses: cachix/install-nix-action@v31
 
       - name: Update flake
-        id: flake
         run: nix flake update
 
       - name: Source rebase
-        id: rebase
         run: git pull --autostash --rebase
 
       - name: Commit changes

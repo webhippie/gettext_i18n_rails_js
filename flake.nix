@@ -59,7 +59,7 @@
               languages = {
                 ruby = {
                   enable = true;
-                  package = pkgs.ruby_3_3;
+                  package = pkgs.ruby_3_4;
                 };
               };
 

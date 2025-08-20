@@ -50,7 +50,7 @@ module GettextI18nRailsJs
           multiline = false
           line_no = 0
           buffer = ""
-          f.each_line.each_with_index.collect do |line, idx|
+          f.each_line.with_index.collect do |line, idx|
             if multiline
               buffer << cleanup_multiline_line(line)
             else

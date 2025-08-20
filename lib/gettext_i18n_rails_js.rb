@@ -29,6 +29,7 @@ gem "gettext", version: ">= 3.0.2"
 gem "gettext_i18n_rails", version: ">= 0.7.1"
 gem "po_to_json", version: ">= 2.0.0"
 
+require "logger"
 require "rails"
 require "gettext"
 require "gettext_i18n_rails"

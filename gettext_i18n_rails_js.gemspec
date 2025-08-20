@@ -30,6 +30,7 @@ require "gettext_i18n_rails_js/version"
 Gem::Specification.new do |s|
   s.name = "gettext_i18n_rails_js"
   s.version = GettextI18nRailsJs::Version
+  s.platform = Gem::Platform::RUBY
 
   s.authors = ["Thomas Boerger", "Nubis"]
   s.email = ["thomas@webhippie.de", "nubis@woobiz.com.ar"]
@@ -52,18 +53,9 @@ Gem::Specification.new do |s|
   s.files = ["CHANGELOG.md", "README.md", "LICENSE"]
   s.files += Dir.glob("lib/**/*")
   s.files += Dir.glob("vendor/**/*")
-
-  s.test_files = Dir.glob("spec/**/*")
-
-  s.executables = []
   s.require_paths = ["lib"]
-
   s.required_ruby_version = ">= 1.9.3"
-
-  s.add_development_dependency "bundler"
-  s.add_development_dependency "rake"
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "yard"
+  s.metadata["rubygems_mfa_required"] = "true"
 
   s.add_dependency "gettext", ">= 3.0.2"
   s.add_dependency "gettext_i18n_rails", ">= 0.7.1"
