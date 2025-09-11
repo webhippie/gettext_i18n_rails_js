@@ -10,20 +10,21 @@
       url = "github:cachix/devenv";
     };
 
-    pre-commit-hooks-nix = {
-      url = "github:cachix/pre-commit-hooks.nix";
-    };
-
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
+
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+    };
   };
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs =
+    inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.devenv.flakeModule
-        inputs.pre-commit-hooks-nix.flakeModule
+        inputs.git-hooks.flakeModule
       ];
 
       systems = [
@@ -33,40 +34,49 @@
         "aarch64-darwin"
       ];
 
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
-        imports = [
-          {
-            _module.args.pkgs = import inputs.nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          }
-        ];
-
-        pre-commit = {
-          settings = {
-            hooks = {
-              nixpkgs-fmt = {
-                enable = true;
+      perSystem =
+        {
+          config,
+          self',
+          inputs',
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          imports = [
+            {
+              _module.args.pkgs = import inputs.nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
               };
-            };
-          };
-        };
+            }
+          ];
 
-        devenv = {
-          shells = {
-            default = {
-              languages = {
-                ruby = {
-                  enable = true;
-                  package = pkgs.ruby_3_4;
+          devenv = {
+            shells = {
+              default = {
+                git-hooks = {
+                  hooks = {
+                    nixfmt-rfc-style = {
+                      enable = true;
+                    };
+                  };
                 };
-              };
 
-              packages = with pkgs; [];
+                languages = {
+                  ruby = {
+                    enable = true;
+                    package = pkgs.ruby_3_4;
+                  };
+                };
+
+                packages = with pkgs; [
+                  nixfmt-rfc-style
+                ];
+              };
             };
           };
         };
-      };
     };
 }
