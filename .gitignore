@@ -1,17 +1,16 @@
-.direnv
-.devenv
+.direnv/
+.devenv/
 
-.DS_Store
+.yardoc
+.bundle
+.vagrant
 
-/.idea
-/.yardoc
-/.bundle
-/.vagrant
+coverage/
+pkg/
+doc/
+vendor/
 
-/coverage
-/pkg
-/doc
-/vendor
+Gemfile.lock
+Gemfile.local
 
-/Gemfile.lock
-/Gemfile.local
+.pre-commit-config.yaml
