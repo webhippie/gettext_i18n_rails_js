@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Release gem
-        uses: dawidd6/action-publish-gem@v1
+        uses: dawidd6/action-publish-gem@c4713bf1595e0686322d6cf6c1a1c0dcaeca55de # v1
         with:
           api_key: ${{ secrets.RUBYGEMS_API_KEY }}
 
