@@ -7,7 +7,6 @@ repository:
 
   private: false
   has_issues: true
-  has_projects: false
   has_wiki: false
   has_downloads: false
 
@@ -16,6 +15,12 @@ repository:
   allow_merge_commit: false
   allow_squash_merge: true
   allow_rebase_merge: true
+
+  allow_update_branch: true
+  allow_auto_merge: true
+  delete_branch_on_merge: true
+  enable_automated_security_fixes: true
+  enable_vulnerability_alerts: true
 
 rulesets:
   - name: prevent destruction
@@ -161,5 +166,8 @@ labels:
   - name: outdated
     color: cccccc
     description: This is out of scope and outdated
+  - name: tools
+    color: 1d76db
+    description: Tools updates used for CI and other tasks
 
 ...
