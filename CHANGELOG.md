@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.2.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.1.0...v2.2.0) (2025-09-12)
+
+
+### Features
+
+* integrate automated release process ([d5d5c31](https://github.com/webhippie/gettext_i18n_rails_js/commit/d5d5c310c154ffa543969368fe264dda1c7060b6))
+* update rubocop rules and test cases ([abf02a4](https://github.com/webhippie/gettext_i18n_rails_js/commit/abf02a425967e60008a8f2678bd5b81f71aaa503))
+
+
+### Bugfixes
+
+* always download via https from rubygems ([f760826](https://github.com/webhippie/gettext_i18n_rails_js/commit/f760826352b73e768b9ed29c7b8fba7b38bf8af6))
+* respect new version variable ([0801533](https://github.com/webhippie/gettext_i18n_rails_js/commit/0801533db52d9eebe697b5ce29878bcc264f245e))
+
 ## [2.1.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v2.1.0) - 2024-05-23
 
 *   Autoload parsers only on first usage to reduce memory consumption (@jrafanie)

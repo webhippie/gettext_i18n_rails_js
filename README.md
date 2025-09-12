@@ -17,7 +17,7 @@ look at the [wokflow][workflow].
 ## Installation
 
 ```ruby
-gem 'gettext_i18n_rails_js', '~> 2.0'
+gem 'gettext_i18n_rails_js', '~> 2.2.0'
 ```
 
 ## Versioning
@@ -34,7 +34,7 @@ gem using the [Pessimistic Version Constraint][pvc] with two digits of precision
 For example:
 
 ```ruby
-spec.add_dependency 'gettext_i18n_rails_js', '~> 2.0'
+spec.add_dependency 'gettext_i18n_rails_js', '~> 2.2.0'
 ```
 
 ## Usage
