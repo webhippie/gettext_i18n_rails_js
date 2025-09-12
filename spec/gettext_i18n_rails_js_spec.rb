@@ -28,6 +28,6 @@ require "spec_helper"
 
 describe GettextI18nRailsJs do
   it "has a valid version" do
-    expect(GettextI18nRailsJs::Version.to_s).to match(/^\d+\.\d+\.\d+$/)
+    expect(GettextI18nRailsJs::VERSION).to match(/^\d+\.\d+\.\d+$/)
   end
 end
