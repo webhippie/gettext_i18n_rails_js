@@ -29,7 +29,7 @@ require "gettext_i18n_rails_js/version"
 
 Gem::Specification.new do |s|
   s.name = "gettext_i18n_rails_js"
-  s.version = GettextI18nRailsJs::Version
+  s.version = GettextI18nRailsJs::VERSION
   s.platform = Gem::Platform::RUBY
 
   s.authors = ["Thomas Boerger", "Nubis"]

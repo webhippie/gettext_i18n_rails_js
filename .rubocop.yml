@@ -68,4 +68,7 @@ Naming/VariableNumber:
 Style/FormatStringToken:
   EnforcedStyle: template
 
+Style/RedundantFreeze:
+  Enabled: false
+
 ...

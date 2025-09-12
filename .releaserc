@@ -1,0 +1,178 @@
+{
+    "branches": [
+        "master"
+    ],
+    "plugins": [
+        [
+            "@semantic-release/commit-analyzer",
+            {
+                "preset": "conventionalcommits",
+                "releaseRules": [
+                    {
+                        "type": "major",
+                        "release": "major"
+                    },
+                    {
+                        "type": "deps",
+                        "scope": "major",
+                        "release": "major"
+                    },
+                    {
+                        "type": "minor",
+                        "release": "minor"
+                    },
+                    {
+                        "type": "deps",
+                        "scope": "minor",
+                        "release": "minor"
+                    },
+                    {
+                        "type": "patch",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "deps",
+                        "scope": "patch",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "refactor",
+                        "release": "minor"
+                    },
+                    {
+                        "scope": "docs",
+                        "release": false
+                    }
+                ]
+            }
+        ],
+        [
+            "@semantic-release/release-notes-generator",
+            {
+                "preset": "conventionalcommits",
+                "presetConfig": {
+                    "types": [
+                        {
+                            "type": "major",
+                            "section": "Features"
+                        },
+                        {
+                            "type": "deps",
+                            "scope": "major",
+                            "section": "Features"
+                        },
+                        {
+                            "type": "minor",
+                            "section": "Features"
+                        },
+                        {
+                            "type": "deps",
+                            "scope": "minor",
+                            "section": "Features"
+                        },
+                        {
+                            "type": "patch",
+                            "section": "Bugfixes"
+                        },
+                        {
+                            "type": "deps",
+                            "scope": "patch",
+                            "section": "Bugfixes"
+                        },
+                        {
+                            "type": "feat",
+                            "section": "Features"
+                        },
+                        {
+                            "type": "fix",
+                            "section": "Bugfixes"
+                        },
+                        {
+                            "type": "chore",
+                            "hidden": true
+                        },
+                        {
+                            "type": "docs",
+                            "hidden": true
+                        },
+                        {
+                            "type": "refactor",
+                            "hidden": true
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogTitle": "# Changelog"
+            }
+        ],
+        [
+            "semantic-release-replace-plugin",
+            {
+                "replacements": [
+                    {
+                        "files": [
+                            "README.md"
+                        ],
+                        "from": "gem 'gettext_i18n_rails_js', '~> .*'",
+                        "to": "gem 'gettext_i18n_rails_js', '~> ${nextRelease.version}'",
+                        "results": [
+                            {
+                                "file": "README.md",
+                                "hasChanged": true,
+                                "numMatches": 1,
+                                "numReplacements": 1
+                            }
+                        ],
+                        "countMatches": true
+                    },
+                    {
+                        "files": [
+                            "README.md"
+                        ],
+                        "from": "spec.add_dependency 'gettext_i18n_rails_js', '~> .*'",
+                        "to": "spec.add_dependency 'gettext_i18n_rails_js', '~> ${nextRelease.version}'",
+                        "results": [
+                            {
+                                "file": "README.md",
+                                "hasChanged": true,
+                                "numMatches": 1,
+                                "numReplacements": 1
+                            }
+                        ],
+                        "countMatches": true
+                    }
+                ]
+            }
+        ],
+        [
+            "@webhippie/semantic-release-rubygem",
+            {
+                "updateGemfileLock": false,
+                "gemPublish": true,
+                "versionGlob": "lib/*/version.rb"
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "message": "chore: release ${nextRelease.version}",
+                "assets": [
+                    "CHANGELOG.md",
+                    "README.md",
+                    "lib/gettext_i18n_rails_js/version.rb"
+                ]
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "publish": true,
+                "assets": "pkg/*.gem"
+            }
+        ]
+    ]
+}

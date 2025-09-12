@@ -3,12 +3,13 @@
 name: release
 
 "on":
-  push:
-    tags:
-      - v*
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 1"
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   release:
@@ -16,11 +17,50 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-
-      - name: Release gem
-        uses: dawidd6/action-publish-gem@c4713bf1595e0686322d6cf6c1a1c0dcaeca55de # v1
+        uses: actions/checkout@v5
         with:
-          api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+          token: ${{ secrets.BOT_ACCESS_TOKEN }}
+
+      - name: Setup nodejs
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22.x
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Install releaser
+        run: |
+          npm install -g \
+            conventional-changelog-conventionalcommits@6.1.0 \
+            semantic-release@23.1.1 \
+            @semantic-release/changelog \
+            @semantic-release/git \
+            @webhippie/semantic-release-rubygem \
+            semantic-release-replace-plugin
+
+      - name: Run releaser
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_ACCESS_TOKEN }}
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: semantic-release
+
+      - name: Write buildtime
+        run: date >| .github/RELEASE
+
+      - name: Update repo
+        run: git pull --rebase --autostash
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Actions
+          author_email: github@webhippie.de
+          add: .github/RELEASE
+          message: "docs: automated release update [skip ci]"
+          push: true
+          commit: --signoff
 
 ...
