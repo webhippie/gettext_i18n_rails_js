@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.2.1...v2.2.2) (2025-10-13)
+
+
+### Bugfixes
+
+* **patch:** update dependency ruby to v3.4.7 ([#97](https://github.com/webhippie/gettext_i18n_rails_js/issues/97)) ([f8c3d06](https://github.com/webhippie/gettext_i18n_rails_js/commit/f8c3d064efcb64730e6e3abdea899e5797c78621))
+
 ## [2.2.1](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.2.0...v2.2.1) (2025-09-22)
 
 
