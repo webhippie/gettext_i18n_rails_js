@@ -43,7 +43,7 @@ module GettextI18nRailsJs
         @gettext_function ||= "__"
       end
 
-      # We're lazy and klumsy, so this is a regex based parser that looks for
+      # We're lazy and clumsy, so this is a regex based parser that looks for
       # invocations of the various gettext functions. Once captured, we scan
       # them once again to fetch all the function arguments. Invoke regex
       # captures like this:
@@ -73,7 +73,7 @@ module GettextI18nRailsJs
       # [2]: 'foo', 'foos', 3
       #
       # The PO file outputs to a "" string.
-      # single quotes are unescped (if they are escaped)
+      # single quotes are unescaped (if they are escaped)
       # double quotes are escaped (if they are not already escaped)
       def parse(file, _msgids = [])
         collect_for(file) do |function, arguments, line|

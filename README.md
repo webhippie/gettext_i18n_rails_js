@@ -12,7 +12,7 @@ client side javascript.
 ## Versions
 
 For a list of the tested and supported Ruby and Rails versions please take a
-look at the [wokflow][workflow].
+look at the [workflow][workflow].
 
 ## Installation
 
@@ -39,7 +39,7 @@ spec.add_dependency 'gettext_i18n_rails_js', '~> 2.2.2'
 
 ## Usage
 
-Set up you rails application with gettext support as usual, afterwards just
+Set up your rails application with gettext support as usual, afterwards just
 execute the following rake task to export your translations to JSON:
 
 ```bash
