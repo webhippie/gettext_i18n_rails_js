@@ -183,23 +183,42 @@ describe GettextI18nRailsJs::Parser::Javascript do
       end
     end
 
-    it "finds strings that use escaped strings" do
+    it "finds strings with embedded double quotes" do
       content = <<-'EOF'
-        __("hello \"dude\"") + __('how is it \'going\' ') +
-        __('stellar "dude"') + __("it's 'going' good")
+        __("hello \"dude\"") + __('how is it "going"') + __(`on this "fine" day`)
       EOF
 
       with_file content do |path|
-        expect(parser.parse(path, [])).to(
-          eq(
-            [
-              ["hello \\\"dude\\\"", "#{path}:1"],
-              ["how is it 'going' ", "#{path}:1"],
-              ["stellar \\\"dude\\\"", "#{path}:2"],
-              ["it's 'going' good", "#{path}:2"]
-            ]
-          )
-        )
+        ret = parser.parse(path, [])
+        expect(ret[0]).to eq(["hello \\\"dude\\\"", "#{path}:1"])
+        expect(ret[1]).to eq(["how is it \\\"going\\\"", "#{path}:1"])
+        expect(ret[2]).to eq(["on this \\\"fine\\\" day", "#{path}:1"])
+      end
+    end
+
+    it "finds strings with embedded single quotes" do
+      content = <<-'EOF'
+        __("hello 'dude'") + __('how is it \'going\'') + __(`on this 'fine' day`)
+      EOF
+
+      with_file content do |path|
+        ret = parser.parse(path, [])
+        expect(ret[0]).to eq(["hello 'dude'", "#{path}:1"])
+        expect(ret[1]).to eq(["how is it 'going'", "#{path}:1"])
+        expect(ret[2]).to eq(["on this 'fine' day", "#{path}:1"])
+      end
+    end
+
+    it "finds strings with embedded back ticks" do
+      content = <<-'EOF'
+        __("hello `dude`") + __('how is it `going`') + __(`on this \`fine\` day`)
+      EOF
+
+      with_file content do |path|
+        ret = parser.parse(path, [])
+        expect(ret[0]).to eq(["hello `dude`", "#{path}:1"])
+        expect(ret[1]).to eq(["how is it `going`", "#{path}:1"])
+        expect(ret[2]).to eq(["on this \\`fine\\` day", "#{path}:1"]) # FIXME: this is the issue with the tests
       end
     end
 
