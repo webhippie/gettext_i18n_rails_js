@@ -190,9 +190,9 @@ describe GettextI18nRailsJs::Parser::Javascript do
 
       with_file content do |path|
         ret = parser.parse(path, [])
-        expect(ret[0]).to eq(["hello \\\"dude\\\"", "#{path}:1"])
-        expect(ret[1]).to eq(["how is it \\\"going\\\"", "#{path}:1"])
-        expect(ret[2]).to eq(["on this \\\"fine\\\" day", "#{path}:1"])
+        expect(ret[0]).to eq(["hello \"dude\"", "#{path}:1"])
+        expect(ret[1]).to eq(["how is it \"going\"", "#{path}:1"])
+        expect(ret[2]).to eq(["on this \"fine\" day", "#{path}:1"])
       end
     end
 
@@ -218,7 +218,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
         ret = parser.parse(path, [])
         expect(ret[0]).to eq(["hello `dude`", "#{path}:1"])
         expect(ret[1]).to eq(["how is it `going`", "#{path}:1"])
-        expect(ret[2]).to eq(["on this \\`fine\\` day", "#{path}:1"]) # FIXME: this is the issue with the tests
+        expect(ret[2]).to eq(["on this `fine` day", "#{path}:1"])
       end
     end
 
@@ -234,7 +234,7 @@ describe GettextI18nRailsJs::Parser::Javascript do
         expect(parser.parse(path, [])).to(
           eq(
             [
-              ["Hello, my name is <span class=\\\"name\\\">John Doe</span> and this is a very long string", "#{path}:2"]
+              ["Hello, my name is <span class=\"name\">John Doe</span> and this is a very long string", "#{path}:2"]
             ]
           )
         )
