@@ -123,34 +123,6 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
-    # it "finds messages with newlines/tabs" do
-    #   content = <<-EOF
-    #     bla = __("xxxx\n\tfoo")
-    #   EOF
-
-    #   with_file content do |path|
-    #     expect(parser.parse(path, [])).to(
-    #       eq(
-    #         [
-    #           ["xxxx\n\tfoo", "#{path}:1"]
-    #         ]
-    #       )
-    #     )
-    #   end
-    # end
-
-    # it "finds messages with newlines/tabs (single quotes)" do
-    #   content = <<-EOF
-    #     bla = __('xxxx\n\tfoo')
-    #   EOF
-
-    #   with_file content do |path|
-    #     parser.parse(path, []).should == [
-    #       ["xxxx\n\tfoo", "#{path}:1"]
-    #     ]
-    #   end
-    # end
-
     # rubocop:disable Style/TrailingCommaInArrayLiteral
     it "finds interpolated multi-line messages" do
       content = <<-EOF
