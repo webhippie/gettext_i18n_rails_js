@@ -97,13 +97,6 @@ module GettextI18nRailsJs
         result.strip
       end
 
-      def cleanup_value(value)
-        value
-          .tr("\n", "\n")
-          .tr("\t", "\t")
-          .tr("\0", "\0")
-      end
-
       def separator_for(value)
         if value == "n#{gettext_function}"
           "\000"
@@ -114,7 +107,7 @@ module GettextI18nRailsJs
 
       def results_for(key, file, line)
         [
-          cleanup_value(key),
+          key,
           [file, line].join(":")
         ]
       end
