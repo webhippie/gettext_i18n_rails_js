@@ -34,6 +34,7 @@ if ENV.key? "CODACY_PROJECT_TOKEN"
 end
 
 require "gettext_i18n_rails_js"
+require "gettext_i18n_rails_js/parser"
 require "rspec"
 
 Dir[File.expand_path("support/**/*.rb", __dir__)].sort.each do |file|
