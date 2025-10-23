@@ -25,18 +25,13 @@
 #
 
 gem "rails", version: ">= 3.2.0"
-gem "gettext", version: ">= 3.0.2"
 gem "gettext_i18n_rails", version: ">= 0.7.1"
-gem "po_to_json", version: ">= 2.0.0"
 
 require "logger"
 require "rails"
-require "gettext"
 require "gettext_i18n_rails"
-require "po_to_json"
 
 require_relative "gettext_i18n_rails_js/version"
-require_relative "gettext_i18n_rails_js/parser"
 require_relative "gettext_i18n_rails_js/config"
 require_relative "gettext_i18n_rails_js/engine"
 
