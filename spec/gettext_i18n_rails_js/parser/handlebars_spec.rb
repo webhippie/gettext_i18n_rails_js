@@ -133,7 +133,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         expect(parser.parse(path, [])).to(
           eq(
             [
-              ["Hello, my name is <span class=\\\"name\\\">John Doe</span>
+              ["Hello, my name is <span class=\"name\">John Doe</span>
                     and this is a very long string", "#{path}:1"],
             ]
           )
