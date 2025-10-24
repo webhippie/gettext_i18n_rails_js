@@ -35,14 +35,7 @@ module GettextI18nRailsJs
       extend self
 
       def target?(file)
-        [
-          /\.handlebars\Z/,
-          /\.handlebars.erb\Z/,
-          /\.hbs\Z/,
-          /\.hbs.erb\Z/,
-          /\.mustache\Z/,
-          /\.mustache.erb\Z/
-        ].any? { |regexp| file.match regexp }
+        file.match(/\.(?:handlebars|hbs|mustache)(?:\.erb)?\Z/)
       end
 
       protected
