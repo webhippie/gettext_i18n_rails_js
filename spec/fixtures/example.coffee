@@ -13,3 +13,5 @@ object =
 """
   #{ __("Multi-line") }
 """
+
+$("<option>").text(__("Your Boards")).attr("value", "User|#{Gigabase.user_id}")
