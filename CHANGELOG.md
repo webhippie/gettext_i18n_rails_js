@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.2.2...v2.3.0) (2025-10-27)
+
+
+### Features
+
+* revert autoload the parsers on first use ([6ba132d](https://github.com/webhippie/gettext_i18n_rails_js/commit/6ba132d13b728ec2d2e194c8c316f090ab855bf9))
+
+
+### Bugfixes
+
+* double escaping double quotes ([d18f4fc](https://github.com/webhippie/gettext_i18n_rails_js/commit/d18f4fc2469ee71f3ab42a03ec090acba077ca14)), closes [#55](https://github.com/webhippie/gettext_i18n_rails_js/issues/55) [#55](https://github.com/webhippie/gettext_i18n_rails_js/issues/55)
+* improve memory usage when loading the gem ([#107](https://github.com/webhippie/gettext_i18n_rails_js/issues/107)) ([7164d9a](https://github.com/webhippie/gettext_i18n_rails_js/commit/7164d9aa79a757de53a279b87cce91102999720e)), closes [#66](https://github.com/webhippie/gettext_i18n_rails_js/issues/66) [#106](https://github.com/webhippie/gettext_i18n_rails_js/issues/106) [#66](https://github.com/webhippie/gettext_i18n_rails_js/issues/66)
+
 ## [2.2.2](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.2.1...v2.2.2) (2025-10-13)
 
 
