@@ -431,7 +431,8 @@ describe GettextI18nRailsJs::Parser::Javascript do
             ["new-trans", "#{example}:8"],
             ["namespaced\004trans", "#{example}:9"],
             ["Hello\\nBuddy", "#{example}:11"],
-            ["Multi-line", "#{example}:14"]
+            ["Multi-line", "#{example}:14"],
+            ["Your Boards", "#{example}:17"]
           ]
         )
       )
