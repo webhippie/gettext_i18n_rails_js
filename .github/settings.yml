@@ -49,18 +49,16 @@ rulesets:
         parameters:
           strict_required_status_checks_policy: true
           required_status_checks:
-            - context: Semantic PR
-              integration_id: 198092
             - context: rubocop
               integration_id: 15368
     bypass_actors:
       - actor_id: 1
         actor_type: OrganizationAdmin
         bypass_mode: always
-      - actor_id: 951695 # app
+      - actor_id: 951695  # app
         actor_type: Integration
         bypass_mode: always
-      - actor_id: 6359533 # bots
+      - actor_id: 6359533  # bots
         actor_type: Team
         bypass_mode: always
 
@@ -87,10 +85,10 @@ rulesets:
       - actor_id: 1
         actor_type: OrganizationAdmin
         bypass_mode: always
-      - actor_id: 951695 # app
+      - actor_id: 951695  # app
         actor_type: Integration
         bypass_mode: always
-      - actor_id: 6359533 # bots
+      - actor_id: 6359533  # bots
         actor_type: Team
         bypass_mode: always
 
