@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.3.1...v3.0.0) (2025-12-29)
+
+
+### Features
+
+* **major:** update dependency ruby to v4 ([#123](https://github.com/webhippie/gettext_i18n_rails_js/issues/123)) ([47b0584](https://github.com/webhippie/gettext_i18n_rails_js/commit/47b05846ed1c28781562d04cc7b6a26d793cef29))
+
 ## [2.3.1](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.3.0...v2.3.1) (2025-12-22)
 
 
