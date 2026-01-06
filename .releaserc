@@ -57,26 +57,11 @@
                             "section": "Features"
                         },
                         {
-                            "type": "deps",
-                            "scope": "major",
-                            "section": "Features"
-                        },
-                        {
                             "type": "minor",
                             "section": "Features"
                         },
                         {
-                            "type": "deps",
-                            "scope": "minor",
-                            "section": "Features"
-                        },
-                        {
                             "type": "patch",
-                            "section": "Bugfixes"
-                        },
-                        {
-                            "type": "deps",
-                            "scope": "patch",
                             "section": "Bugfixes"
                         },
                         {
@@ -88,8 +73,13 @@
                             "section": "Bugfixes"
                         },
                         {
+                            "type": "deps",
+                            "section": "Dependencies"
+                        },
+                        {
                             "type": "chore",
-                            "hidden": true
+                            "section": "Miscellaneous",
+                            "hidden": false
                         },
                         {
                             "type": "docs",
@@ -170,8 +160,9 @@
         [
             "@semantic-release/github",
             {
-                "publish": true,
-                "assets": "pkg/*.gem"
+                "assets": [
+                    "pkg/*.gem"
+                ]
             }
         ]
     ]
