@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.1.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.0.0...v3.1.0) (2026-01-08)
+
+### Features
+
+* add support for .ts and .tsx files ([a8fe5f7](https://github.com/webhippie/gettext_i18n_rails_js/commit/a8fe5f777d33a895b6dca290a40603289105680b))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([798c3ee](https://github.com/webhippie/gettext_i18n_rails_js/commit/798c3ee1bfa68301e7947c2fec9a3fda76184e18))
+* **flake:** updated lockfile [skip ci] ([c85acfb](https://github.com/webhippie/gettext_i18n_rails_js/commit/c85acfb20df79b27a7916eecbefb65d92d7dd46b))
+
 ## [3.0.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v2.3.1...v3.0.0) (2025-12-29)
 
 
