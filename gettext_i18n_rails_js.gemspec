@@ -41,10 +41,10 @@ Gem::Specification.new do |s|
   EOF
 
   s.description = <<-EOF
-    It will find translations inside your .js and .coffee files, then it will
-    create JSON versions of your .PO files and will let you serve them with the
-    rest of your assets, thus letting you access all your translations offline
-    from client side javascript.
+    It will find translations inside your .js, .jsx, .ts, .tsx, .coffee files,
+    then it will create JSON versions of your .PO files and will let you serve
+    them with the rest of your assets, thus letting you access all your
+    translations offline from client side javascript.
   EOF
 
   s.homepage = "https://github.com/webhippie/gettext_i18n_rails_js"
