@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.1.1](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.0...v3.1.1) (2026-01-19)
+
+### Dependencies
+
+* **patch:** update dependency ruby to v4.0.1 ([#127](https://github.com/webhippie/gettext_i18n_rails_js/issues/127)) ([f0edacc](https://github.com/webhippie/gettext_i18n_rails_js/commit/f0edacce77bd1c2637bcad1186fbf8f11b94f5c7))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([fc2791d](https://github.com/webhippie/gettext_i18n_rails_js/commit/fc2791d22b37310a97e38af28a3e90bee3d32e48))
+
 ## [3.1.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.0.0...v3.1.0) (2026-01-08)
 
 ### Features
