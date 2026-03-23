@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.1.2](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.1...v3.1.2) (2026-03-23)
+
+### Dependencies
+
+* **patch:** update dependency ruby to v4.0.2 ([#131](https://github.com/webhippie/gettext_i18n_rails_js/issues/131)) ([dde0671](https://github.com/webhippie/gettext_i18n_rails_js/commit/dde0671dcef31fcffdb35bc4ebd15cd92d14ae8e))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([bc432f4](https://github.com/webhippie/gettext_i18n_rails_js/commit/bc432f4d541f36d4378e02e31c29ee32266b8187))
+* **flake:** updated lockfile [skip ci] ([21afe2f](https://github.com/webhippie/gettext_i18n_rails_js/commit/21afe2f6c2ba4f3e31cf1d55f0f01af997d510bf))
+* **flake:** updated lockfile [skip ci] ([7766aa1](https://github.com/webhippie/gettext_i18n_rails_js/commit/7766aa1766a023aaade3dad137c09efd606d2a37))
+* **flake:** updated lockfile [skip ci] ([d3241d6](https://github.com/webhippie/gettext_i18n_rails_js/commit/d3241d68598f9d237f73de287bca51db8794e76f))
+* **flake:** updated lockfile [skip ci] ([f3d1d94](https://github.com/webhippie/gettext_i18n_rails_js/commit/f3d1d9459dd8f1c99c35dff3f69bdf102f1bcdbd))
+* **flake:** updated lockfile [skip ci] ([5c09766](https://github.com/webhippie/gettext_i18n_rails_js/commit/5c097664f5a57d1b89fb7e61c6cb2fe7d3e0cf36))
+* **flake:** updated lockfile [skip ci] ([a837bd0](https://github.com/webhippie/gettext_i18n_rails_js/commit/a837bd0911e61664f3d1e477feb84813c514f0fe))
+* **flake:** updated lockfile [skip ci] ([6225787](https://github.com/webhippie/gettext_i18n_rails_js/commit/6225787513d47abf25a8b4848feab505b31a6933))
+* **flake:** updated lockfile [skip ci] ([3ed7e67](https://github.com/webhippie/gettext_i18n_rails_js/commit/3ed7e670c35b0b39d9f30550cbb33a0b1c929cd5))
+
 ## [3.1.1](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.0...v3.1.1) (2026-01-19)
 
 ### Dependencies

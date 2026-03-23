@@ -25,5 +25,5 @@
 #
 
 module GettextI18nRailsJs
-  VERSION = "3.1.1".freeze
+  VERSION = "3.1.2".freeze
 end
