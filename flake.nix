@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-25.11";
     };
 
     devenv = {
