@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.5](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.4...v3.1.5) (2026-05-25)
+
+### Dependencies
+
+* **patch:** update dependency ruby to v4.0.5 ([#139](https://github.com/webhippie/gettext_i18n_rails_js/issues/139)) ([3ad5469](https://github.com/webhippie/gettext_i18n_rails_js/commit/3ad5469f86e25d11af1e206106434f074c683ef7))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([4e59bc8](https://github.com/webhippie/gettext_i18n_rails_js/commit/4e59bc8437e35baea7789f9926928412e40b8fe1))
+* replace nixfmt package ([a495805](https://github.com/webhippie/gettext_i18n_rails_js/commit/a4958051d892f17ff1bb056622b9221b6d9b3a40))
+* switch flake input to 25.11 release ([d777f24](https://github.com/webhippie/gettext_i18n_rails_js/commit/d777f241808d7e41e713ba0ebe37c61711ecb54d))
+
 ## [3.1.4](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.3...v3.1.4) (2026-05-18)
 
 ### Dependencies
