@@ -1,5 +1,7 @@
 # Changelog
 
+## [3.1.6](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.5...v3.1.6) (2026-07-20)
+
 ## [3.1.5](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.4...v3.1.5) (2026-05-25)
 
 ### Dependencies
