@@ -1,0 +1,9 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[tools]
+node = "24"
+prek = "0.5.2"
+ruby = "4.0.6"
+
+[settings.ruby]
+compile = false

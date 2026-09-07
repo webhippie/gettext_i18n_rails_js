@@ -1,5 +1,4 @@
-.direnv/
-.devenv/
+mise.local.toml
 
 .yardoc
 .bundle
@@ -12,5 +11,3 @@ vendor/
 
 Gemfile.lock
 Gemfile.local
-
-.pre-commit-config.yaml

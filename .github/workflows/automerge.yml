@@ -11,6 +11,7 @@ name: automerge
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   dependabot:
@@ -18,11 +19,16 @@ jobs:
     if: github.actor == 'dependabot[bot]'
 
     steps:
+      - name: Setup nodejs
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+
       - name: Generate token
         id: token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.TOKEN_EXCHANGE_APP }}
+          client-id: ${{ secrets.TOKEN_EXCHANGE_APP }}
           private-key: ${{ secrets.TOKEN_EXCHANGE_KEY }}
           permission-contents: write
           permission-pull-requests: write
@@ -32,6 +38,11 @@ jobs:
         uses: dependabot/fetch-metadata@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install deps
+        uses: alexellis/arkade-get@master
+        with:
+          gh: latest
 
       - name: Approve request
         run: gh pr review --approve "${{github.event.pull_request.html_url}}"

@@ -77,16 +77,15 @@
                             "section": "Dependencies"
                         },
                         {
-                            "type": "chore",
-                            "section": "Miscellaneous",
-                            "hidden": false
-                        },
-                        {
                             "type": "docs",
                             "hidden": true
                         },
                         {
                             "type": "refactor",
+                            "hidden": true
+                        },
+                        {
+                            "type": "chore",
                             "hidden": true
                         }
                     ]
