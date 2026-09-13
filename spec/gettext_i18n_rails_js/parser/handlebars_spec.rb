@@ -123,7 +123,7 @@ describe GettextI18nRailsJs::Parser::Handlebars do
       end
     end
 
-    # rubocop:disable Style/TrailingCommaInArrayLiteral
+    # rubocop:disable-next Style/TrailingCommaInArrayLiteral
     it "finds interpolated multi-line messages" do
       content = <<-EOF
         <div>{{{__ 'Hello, my name is <span class="name">John Doe</span>
@@ -140,7 +140,6 @@ describe GettextI18nRailsJs::Parser::Handlebars do
         )
       end
     end
-    # rubocop:enable Style/TrailingCommaInArrayLiteral
 
     #   with_file content do |path|
     #     expect(parser.parse(path, [])).to(
