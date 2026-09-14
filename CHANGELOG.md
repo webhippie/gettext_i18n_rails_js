@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.2.0](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.6...v3.2.0) (2026-09-14)
+
+### Features
+
+* replace flake with mise tools and pipeline ([c7efa85](https://github.com/webhippie/gettext_i18n_rails_js/commit/c7efa855052278458458b0ab54235fb1265c1c74))
+
+### Bugfixes
+
+* use disable-next for current rubocop versions ([3f35172](https://github.com/webhippie/gettext_i18n_rails_js/commit/3f35172b18c55b64a0671ebf60886dde1bf6f72e))
+
+### Dependencies
+
+* **patch:** update dependency prek to v0.5.3 ([#145](https://github.com/webhippie/gettext_i18n_rails_js/issues/145)) ([9b2db04](https://github.com/webhippie/gettext_i18n_rails_js/commit/9b2db0415b9781c108c9fdda3c8a0aa916e2c6a8))
+
 ## [3.1.6](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.5...v3.1.6) (2026-07-20)
 
 ## [3.1.5](https://github.com/webhippie/gettext_i18n_rails_js/compare/v3.1.4...v3.1.5) (2026-05-25)
