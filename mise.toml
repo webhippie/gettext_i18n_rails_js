@@ -2,7 +2,7 @@
 
 [tools]
 node = "24"
-prek = "0.5.5"
+prek = "0.5.6"
 ruby = "4.0.6"
 
 [settings.ruby]
